@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriBot Solutions - Hackathon OpenEPI 2025</title>
+    <link rel="stylesheet" href="src/assets/css/main.css">
+    <link rel="stylesheet" href="src/assets/css/navigation.css">
+    <link rel="stylesheet" href="src/assets/css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button id="lang-fr" class="lang-btn active" onclick="switchLanguage('fr')">
+            <i class="fas fa-flag"></i> FR
+        </button>
+        <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')">
+            <i class="fas fa-flag"></i> EN
+        </button>
+    </div>
+
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-seedling"></i>
+                <span data-translate="app_title">AgriBot Solutions</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#overview" class="nav-link active" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span data-translate="nav_overview">Vue d'ensemble</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#problem" class="nav-link" data-section="problem">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span data-translate="nav_problem">Énoncé du Problème</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#analysis" class="nav-link" data-section="analysis">
+                    <i class="fas fa-chart-line"></i>
+                    <span data-translate="nav_analysis">Analyse des Idées</span>
+                </a>
+            </li>
+            <li class="nav-item has-submenu">
+                <a href="#solutions" class="nav-link" data-section="solutions">
+                    <i class="fas fa-lightbulb"></i>
+                    <span data-translate="nav_solutions">Solutions</span>
+                    <i class="fas fa-chevron-down submenu-arrow"></i>
+                </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#ussd-sms" class="nav-link" data-section="ussd-sms">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span data-translate="nav_ussd_sms">USSD/SMS</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#whatsapp" class="nav-link" data-section="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-translate="nav_whatsapp">WhatsApp Bot</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#ecosystem" class="nav-link" data-section="ecosystem">
+                    <i class="fas fa-network-wired"></i>
+                    <span data-translate="nav_ecosystem">Écosystème</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 data-translate="hero_title">Solutions AgriBot pour l'Alerte Précoce</h1>
+                    <p data-translate="hero_subtitle">Hackathon OpenEPI 2025 - Protéger les cultures avec l'intelligence artificielle</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50,000</div>
+                            <div class="stat-label" data-translate="stat_farmers">Agriculteurs ciblés</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-label" data-translate="stat_reduction">Réduction des pertes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label" data-translate="stat_solutions">Solutions innovantes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-seedling hero-icon"></i>
+                </div>
+            </div>
+
+            <div class="overview-cards">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-farmer"></i>
+                    </div>
+                    <h3 data-translate="overview_user_title">Utilisateur Cible</h3>
+                    <p data-translate="overview_user_desc">Ablawa, 42 ans, productrice de maïs au Togo avec 3 hectares et 5 enfants à charge</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 data-translate="overview_problem_title">Problème</h3>
+                    <p data-translate="overview_problem_desc">Détection tardive des ravageurs causant jusqu'à 33% de pertes de récolte</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3 data-translate="overview_solution_title">Solution</h3>
+                    <p data-translate="overview_solution_desc">Système d'alerte précoce utilisant les données OpenEPI et l'IA</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Statement Section -->
+        <section id="problem" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="problem_title">Énoncé du Problème</h2>
+                <p data-translate="problem_subtitle">Comprendre les défis des petits agriculteurs</p>
+            </div>
+            <div id="problem-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Analysis Section -->
+        <section id="analysis" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="analysis_title">Analyse des Idées</h2>
+                <p data-translate="analysis_subtitle">Évaluation comparative des solutions proposées</p>
+            </div>
+            <div id="analysis-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section id="solutions" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="solutions_title">Solutions Techniques</h2>
+                <p data-translate="solutions_subtitle">Architectures détaillées pour chaque approche</p>
+            </div>
+            <div class="solutions-tabs">
+                <button class="tab-btn active" data-tab="ussd-sms">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span data-translate="tab_ussd_sms">USSD/SMS</span>
+                </button>
+                <button class="tab-btn" data-tab="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-translate="tab_whatsapp">WhatsApp Bot</span>
+                </button>
+            </div>
+            <div id="solutions-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- USSD/SMS Section -->
+        <section id="ussd-sms" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="ussd_title">Solution USSD/SMS</h2>
+                <p data-translate="ussd_subtitle">Technologie universelle pour tous les téléphones</p>
+            </div>
+            <div id="ussd-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- WhatsApp Section -->
+        <section id="whatsapp" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="whatsapp_title">Solution WhatsApp Bot</h2>
+                <p data-translate="whatsapp_subtitle">Messagerie riche et interactive</p>
+            </div>
+            <div id="whatsapp-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Ecosystem Section -->
+        <section id="ecosystem" class="content-section">
+            <div class="section-header">
+                <h2 data-translate="ecosystem_title">Écosystème AgriBot</h2>
+                <p data-translate="ecosystem_subtitle">Vision complète du business model</p>
+            </div>
+            <div id="ecosystem-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="src/assets/js/translations.js"></script>
+    <script src="src/components/problem-content.js"></script>
+    <script src="src/components/analysis-content.js"></script>
+    <script src="src/components/ussd-sms-content.js"></script>
+    <script src="src/components/whatsapp-content.js"></script>
+    <script src="src/assets/js/navigation.js"></script>
+    <script src="src/assets/js/content-loader.js"></script>
+    <script src="src/assets/js/main.js"></script>
+</body>
+</html>
