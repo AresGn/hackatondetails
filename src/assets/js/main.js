@@ -393,6 +393,70 @@ window.setTheme = (theme) => {
     agribotApp.setTheme(theme);
 };
 
+// ===== MOBILE MENU FUNCTIONALITY =====
+function toggleMobileMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const overlay = document.querySelector('.mobile-overlay') || createMobileOverlay();
+
+    if (!sidebar) return;
+
+    const isOpen = sidebar.classList.contains('mobile-open');
+
+    if (isOpen) {
+        // Close menu
+        sidebar.classList.remove('mobile-open');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        overlay.classList.remove('active');
+        document.body.classList.remove('mobile-menu-open');
+    } else {
+        // Open menu
+        sidebar.classList.add('mobile-open');
+        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+        overlay.classList.add('active');
+        document.body.classList.add('mobile-menu-open');
+    }
+}
+
+function createMobileOverlay() {
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-overlay';
+    overlay.onclick = toggleMobileMenu;
+    document.body.appendChild(overlay);
+    return overlay;
+}
+
+// Close mobile menu when clicking on navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-item');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                setTimeout(toggleMobileMenu, 100);
+            }
+        });
+    });
+});
+
+// Close mobile menu on window resize if screen becomes large
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const overlay = document.querySelector('.mobile-overlay');
+
+        if (sidebar && sidebar.classList.contains('mobile-open')) {
+            sidebar.classList.remove('mobile-open');
+            if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            if (overlay) overlay.classList.remove('active');
+            document.body.classList.remove('mobile-menu-open');
+        }
+    }
+});
+
+// Export mobile menu function globally
+window.toggleMobileMenu = toggleMobileMenu;
+
 // Development helpers
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
     window.agribotDebug = {
