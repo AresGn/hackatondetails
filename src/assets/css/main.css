@@ -115,18 +115,65 @@ a:hover {
     color: var(--secondary-color);
 }
 
+/* ===== MOBILE HEADER ===== */
+.mobile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--white);
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Hide mobile header on desktop */
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none;
+    }
+}
+
 /* ===== LANGUAGE TOGGLE ===== */
 .language-toggle {
+    display: flex;
+    gap: var(--spacing-xs);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xs);
+    border: 1px solid #e2e8f0;
+}
+
+/* Desktop language toggle */
+.language-toggle.desktop-only {
     position: fixed;
     top: var(--spacing-lg);
     right: var(--spacing-lg);
     z-index: 1000;
-    display: flex;
-    gap: var(--spacing-xs);
     background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xs);
     box-shadow: var(--shadow-md);
+}
+
+/* Mobile language toggle */
+.language-toggle.mobile-only {
+    background: var(--bg-light);
+}
+
+/* Show/hide based on screen size */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
 }
 
 .lang-btn {
@@ -2469,6 +2516,7 @@ a:hover {
     .main-content {
         margin-left: 0;
         padding: var(--spacing-md);
+        padding-top: calc(70px + var(--spacing-md)); /* Mobile header height + padding */
     }
 
     .header {
@@ -2517,25 +2565,20 @@ a:hover {
 
     /* Mobile menu button */
     .mobile-menu-btn {
-        display: block;
-        position: fixed;
-        top: var(--spacing-lg);
-        left: var(--spacing-lg);
-        z-index: 1001;
         background: var(--primary-color);
         color: var(--white);
         border: none;
         border-radius: var(--radius-lg);
-        padding: var(--spacing-lg);
-        font-size: var(--font-size-xl);
+        padding: var(--spacing-md);
+        font-size: var(--font-size-lg);
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         transition: all 0.3s ease;
-        width: 56px;
-        height: 56px;
+        width: 48px;
+        height: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     .mobile-menu-btn:hover {
@@ -2587,6 +2630,7 @@ a:hover {
 @media (max-width: 480px) {
     .main-content {
         padding: var(--spacing-sm);
+        padding-top: calc(70px + var(--spacing-sm)); /* Mobile header height + padding */
     }
 
     .header {

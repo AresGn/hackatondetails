@@ -12,20 +12,33 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="language-toggle">
-        <button id="lang-fr" class="lang-btn active" onclick="switchLanguage('fr')">
+    <!-- Desktop Language Toggle -->
+    <div class="language-toggle desktop-only">
+        <button id="lang-fr-desktop" class="lang-btn active" onclick="switchLanguage('fr')">
             <i class="fas fa-flag"></i> FR
         </button>
-        <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')">
+        <button id="lang-en-desktop" class="lang-btn" onclick="switchLanguage('en')">
             <i class="fas fa-flag"></i> EN
         </button>
     </div>
 
-    <!-- Mobile Menu Button -->
-    <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Mobile Language Toggle -->
+        <div class="language-toggle mobile-only">
+            <button id="lang-fr-mobile" class="lang-btn active" onclick="switchLanguage('fr')">
+                <i class="fas fa-flag"></i> FR
+            </button>
+            <button id="lang-en-mobile" class="lang-btn" onclick="switchLanguage('en')">
+                <i class="fas fa-flag"></i> EN
+            </button>
+        </div>
+    </div>
 
     <!-- Navigation Sidebar -->
     <nav class="sidebar" id="sidebar">

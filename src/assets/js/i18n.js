@@ -188,13 +188,25 @@ class I18nManager {
 
     // Update language button states
     updateLanguageButtons() {
-        const buttons = document.querySelectorAll('.lang-btn');
-        buttons.forEach(btn => {
+        // Update both desktop and mobile versions
+        const desktopButtons = document.querySelectorAll('.desktop-only .lang-btn');
+        const mobileButtons = document.querySelectorAll('.mobile-only .lang-btn');
+
+        // Remove active class from all buttons
+        [...desktopButtons, ...mobileButtons].forEach(btn => {
             btn.classList.remove('active');
-            if (btn.id === `lang-${this.currentLanguage}`) {
-                btn.classList.add('active');
-            }
         });
+
+        // Add active class to current language buttons
+        const desktopActiveBtn = document.getElementById(`lang-${this.currentLanguage}-desktop`);
+        const mobileActiveBtn = document.getElementById(`lang-${this.currentLanguage}-mobile`);
+
+        if (desktopActiveBtn) {
+            desktopActiveBtn.classList.add('active');
+        }
+        if (mobileActiveBtn) {
+            mobileActiveBtn.classList.add('active');
+        }
     }
 
     // Check if language is valid
