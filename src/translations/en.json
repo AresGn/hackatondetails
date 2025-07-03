@@ -1,0 +1,234 @@
+{
+  "navigation": {
+    "app_title": "AgriBot Solutions",
+    "nav_overview": "Overview",
+    "nav_problem": "Problem Statement",
+    "nav_analysis": "Ideas Analysis",
+    "nav_solutions": "Solutions",
+    "nav_whatsapp": "WhatsApp Bot",
+    "nav_sms_secours": "SMS Backup",
+    "nav_ecosystem": "Ecosystem"
+  },
+  "hero": {
+    "title": "AgriBot Early Warning Solutions",
+    "subtitle": "OpenEPI Hackathon 2025 - Protecting crops with artificial intelligence"
+  },
+  "stats": {
+    "farmers": "Target farmers",
+    "reduction": "Loss reduction",
+    "solutions": "Innovative solutions"
+  },
+  "overview": {
+    "user_title": "Target User",
+    "user_desc": "Ablawa, 42 years old, Cocoa producer in Togo with 3 hectares and 5 children to support",
+    "problem_title": "Problem",
+    "problem_desc": "Late pest detection causing up to 33% crop losses",
+    "solution_title": "Solution",
+    "solution_desc": "Early warning system using OpenEPI data and AI"
+  },
+  "sections": {
+    "problem_title": "Problem Statement",
+    "problem_subtitle": "Understanding the challenges of smallholder farmers",
+    "analysis_title": "Ideas Analysis",
+    "analysis_subtitle": "Comparative evaluation of proposed solutions",
+    "solutions_title": "Technical Solutions",
+    "solutions_subtitle": "Select a solution from the menu to see details",
+    "solutions_placeholder_title": "Choose a solution",
+    "solutions_placeholder_desc": "Use the navigation menu to select WhatsApp Bot or SMS Backup and discover the technical details of each solution.",
+    "sms_secours_title": "SMS Backup - Fallback Plan",
+    "sms_secours_subtitle": "Automatic backup solution with TextBee",
+    "whatsapp_title": "WhatsApp Bot Solution",
+    "whatsapp_subtitle": "Rich and interactive messaging",
+    "ecosystem_title": "AgriBot Ecosystem",
+    "ecosystem_subtitle": "Complete business model vision"
+  },
+  "problem": {
+    "title": "Problem Definition Framework",
+    "user_label": "USER",
+    "user_content": "Small farmers like Ablawa, a 42-year-old corn producer in rural Togo managing 3 hectares and supporting 5 children",
+    "persona_name": "Ablawa",
+    "persona_age": "42 years old",
+    "persona_location": "Togo, Rural area",
+    "persona_details": {
+      "farm": "3 hectares of corn",
+      "family": "5 children to support",
+      "phone": "Basic phone",
+      "income": "Limited income"
+    },
+    "connector_need": "NEEDS",
+    "need_label": "NEED",
+    "need_content": "an accessible early warning and pest detection system to identify threats like fall armyworm before they cause massive crop losses",
+    "need_features": {
+      "early_detection": "Early detection",
+      "accessible": "Accessible on basic phone",
+      "local_language": "Local language interface",
+      "affordable": "Affordable cost",
+      "weather_data": "Integrated weather data",
+      "community_support": "Community support"
+    },
+    "connector_because": "BECAUSE",
+    "insight_label": "INSIGHT",
+    "insight_content": "they lack technological accessibility, systematic monitoring protocols, and trained personnel for crop health surveillance, leaving them vulnerable to unexpected pest outbreaks that can destroy 33% of their harvest and threaten their family's food security and income",
+    "vulnerabilities": {
+      "tech_access": {
+        "title": "Limited technological accessibility",
+        "description": "No reliable internet access, basic phones only"
+      },
+      "surveillance": {
+        "title": "Absence of monitoring protocols",
+        "description": "No structured system to monitor crop health"
+      },
+      "training": {
+        "title": "Untrained personnel",
+        "description": "Lack of training in pest identification"
+      },
+      "economic": {
+        "title": "Critical economic impact",
+        "description": "33% crop losses threaten food security and income"
+      }
+    },
+    "impact": {
+      "title": "Pest Impact",
+      "crop_loss": "Up to 33% crop losses",
+      "food_security": "Threatens food security",
+      "income_loss": "Significant income reduction",
+      "family_impact": "Impact on 5 dependent children"
+    },
+    "current_methods": {
+      "title": "Current Methods",
+      "visual_inspection": "Manual visual inspection",
+      "community_knowledge": "Traditional community knowledge",
+      "reactive_treatment": "Reactive treatment after detection",
+      "limited_resources": "Limited resources for prevention"
+    }
+  },
+  "analysis": {
+    "title": "Comparative Solution Analysis",
+    "subtitle": "Evaluation based on Desirability, Feasibility, Viability criteria",
+    "criteria": {
+      "desirability": "DESIRABILITY",
+      "feasibility": "FEASIBILITY",
+      "viability": "VIABILITY"
+    },
+    "labels": {
+      "pros": "PROS",
+      "cons": "CONS",
+      "score": "TOTAL SCORE",
+      "recommendation": "RECOMMENDED SOLUTION"
+    },
+    "solutions": {
+      "mobile_app": {
+        "name": "Mobile Application",
+        "pros": [
+          "Rich and intuitive user interface",
+          "Advanced features (photos, geolocation)",
+          "Real-time push notifications",
+          "Local data storage capability"
+        ],
+        "cons": [
+          "Requires smartphone (expensive for farmers)",
+          "Dependent on internet connectivity",
+          "Higher learning curve",
+          "Complex maintenance and updates"
+        ]
+      },
+      "whatsapp_bot": {
+        "name": "WhatsApp Bot",
+        "pros": [
+          "Familiar platform for 85% of farmers",
+          "Rich messaging (text, audio, images, videos)",
+          "Intuitive conversational interface",
+          "Works on basic phones",
+          "No app installation required",
+          "Native multilingual support"
+        ],
+        "cons": [
+          "Dependent on WhatsApp availability",
+          "WhatsApp Business API limitations",
+          "Per-message costs for high volumes"
+        ]
+      },
+      "sms_system": {
+        "name": "SMS System",
+        "pros": [
+          "Universal compatibility (100% of phones)",
+          "Works without internet",
+          "Very low cost",
+          "Fast response time",
+          "Multilingual support",
+          "Reliable and robust"
+        ],
+        "cons": [
+          "Limited interface (text only)",
+          "No rich media",
+          "Basic user experience",
+          "Difficult to create complex interactions"
+        ]
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Loading error",
+    "retry": "Retry",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "whatsapp": {
+    "title": "WhatsApp Bot Solution",
+    "subtitle": "Rich and interactive messaging for early warning",
+    "tabs": {
+      "simple": "Simple Version",
+      "technical": "Technical Version"
+    },
+    "simple": {
+      "title": "WhatsApp Bot - Simple Explanation",
+      "description": "An intelligent assistant on WhatsApp that helps farmers protect their crops",
+      "how_it_works": "How it works",
+      "benefits": "Benefits",
+      "workflow": {
+        "step1": "Farmer sends a message or photo of their crop",
+        "step2": "Bot analyzes and identifies potential problems",
+        "step3": "Bot sends personalized advice and alerts",
+        "step4": "Farmer receives regular follow-up"
+      }
+    },
+    "technical": {
+      "title": "WhatsApp Bot - Technical Architecture",
+      "description": "Complete solution integrating WhatsApp Business API, AI and OpenEPI data",
+      "architecture": "Technical Architecture",
+      "implementation": "Implementation",
+      "features": "Key Features"
+    },
+    "ecosystem": {
+      "title": "WhatsApp Bot + SMS Backup Ecosystem"
+    }
+  },
+  "sms_secours": {
+    "title": "SMS Backup - Fallback Plan",
+    "subtitle": "Automatic backup solution with TextBee",
+    "description": "Automatic backup system that activates SMS alerts when WhatsApp is not available",
+    "features": {
+      "automatic": {
+        "title": "Automatic Activation",
+        "description": "Automatically triggers in case of WhatsApp failure"
+      },
+      "textbee": {
+        "title": "TextBee Integration",
+        "description": "Reliable SMS API for guaranteed delivery"
+      },
+      "monitoring": {
+        "title": "Continuous Monitoring",
+        "description": "24/7 monitoring of service availability"
+      },
+      "fallback": {
+        "title": "Smart Fallback",
+        "description": "Automatic switching between channels"
+      }
+    }
+  }
+}

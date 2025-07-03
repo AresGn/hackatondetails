@@ -1,0 +1,234 @@
+{
+  "navigation": {
+    "app_title": "AgriBot Solutions",
+    "nav_overview": "Vue d'ensemble",
+    "nav_problem": "Énoncé du Problème",
+    "nav_analysis": "Analyse des Idées",
+    "nav_solutions": "Solutions",
+    "nav_whatsapp": "WhatsApp Bot",
+    "nav_sms_secours": "SMS Secours",
+    "nav_ecosystem": "Écosystème"
+  },
+  "hero": {
+    "title": "Solutions AgriBot pour l'Alerte Précoce",
+    "subtitle": "Hackathon OpenEPI 2025 - Protéger les cultures avec l'intelligence artificielle"
+  },
+  "stats": {
+    "farmers": "Agriculteurs ciblés",
+    "reduction": "Réduction des pertes",
+    "solutions": "Solutions innovantes"
+  },
+  "overview": {
+    "user_title": "Utilisateur Cible",
+    "user_desc": "Ablawa, 42 ans, productrice de Cacao au Togo avec 3 hectares et 5 enfants à charge",
+    "problem_title": "Problème",
+    "problem_desc": "Détection tardive des ravageurs causant jusqu'à 33% de pertes de récolte",
+    "solution_title": "Solution",
+    "solution_desc": "Système d'alerte précoce utilisant les données OpenEPI et l'IA"
+  },
+  "sections": {
+    "problem_title": "Énoncé du Problème",
+    "problem_subtitle": "Comprendre les défis des petits agriculteurs",
+    "analysis_title": "Analyse des Idées",
+    "analysis_subtitle": "Évaluation comparative des solutions proposées",
+    "solutions_title": "Solutions Techniques",
+    "solutions_subtitle": "Sélectionnez une solution dans le menu pour voir les détails",
+    "solutions_placeholder_title": "Choisissez une solution",
+    "solutions_placeholder_desc": "Utilisez le menu de navigation pour sélectionner WhatsApp Bot ou SMS Secours et découvrir les détails techniques de chaque solution.",
+    "sms_secours_title": "SMS Secours - Plan de Fallback",
+    "sms_secours_subtitle": "Solution de secours automatique avec TextBee",
+    "whatsapp_title": "Solution WhatsApp Bot",
+    "whatsapp_subtitle": "Messagerie riche et interactive",
+    "ecosystem_title": "Écosystème AgriBot",
+    "ecosystem_subtitle": "Vision complète du business model"
+  },
+  "problem": {
+    "title": "Cadre de Définition du Problème",
+    "user_label": "UTILISATEUR",
+    "user_content": "Petits agriculteurs comme Ablawa, productrice de maïs de 42 ans en zone rurale du Toqui gère 3 hectares et soutient 5 enfants",
+    "persona_name": "Ablawa",
+    "persona_age": "42 ans",
+    "persona_location": "Togo, Zone rurale",
+    "persona_details": {
+      "farm": "3 hectares de maïs",
+      "family": "5 enfants à charge",
+      "phone": "Téléphone basique",
+      "income": "Revenus limités"
+    },
+    "connector_need": "A BESOIN DE",
+    "need_label": "BESOIN",
+    "need_content": "un système d'alerte précoce et de détection des ravageurs accessible pour identifier les menaces comme la chenille légionnaire avant qu'elles causent des pertes massives de récolte",
+    "need_features": {
+      "early_detection": "Détection précoce",
+      "accessible": "Accessible sur téléphone basique",
+      "local_language": "Interface en langue locale",
+      "affordable": "Coût abordable",
+      "weather_data": "Données météo intégrées",
+      "community_support": "Support communautaire"
+    },
+    "connector_because": "PARCE QUE",
+    "insight_label": "INSIGHT",
+    "insight_content": "ils manquent d'accessibilité technologique, de protocoles de surveillance systématiques et de personnel formé pour la surveillance de la santé des cultures, les laissant vulnérables aux épidémies de ravageurs imprévues qui peuvent détruire 33% de leur récolte et menacer la sécurité alimentaire et les revenus de leur famille",
+    "vulnerabilities": {
+      "tech_access": {
+        "title": "Accessibilité technologique limitée",
+        "description": "Pas d'accès internet fiable, téléphones basiques uniquement"
+      },
+      "surveillance": {
+        "title": "Absence de protocoles de surveillance",
+        "description": "Pas de système structuré pour surveiller la santé des cultures"
+      },
+      "training": {
+        "title": "Personnel non formé",
+        "description": "Manque de formation en identification des ravageurs"
+      },
+      "economic": {
+        "title": "Impact économique critique",
+        "description": "33% de pertes de récolte menacent la sécurité alimentaire et les revenus"
+      }
+    },
+    "impact": {
+      "title": "Impact des Ravageurs",
+      "crop_loss": "Jusqu'à 33% de pertes de récolte",
+      "food_security": "Menace la sécurité alimentaire",
+      "income_loss": "Réduction significative des revenus",
+      "family_impact": "Impact sur 5 enfants à charge"
+    },
+    "current_methods": {
+      "title": "Méthodes Actuelles",
+      "visual_inspection": "Inspection visuelle manuelle",
+      "community_knowledge": "Connaissances communautaires traditionnelles",
+      "reactive_treatment": "Traitement réactif après détection",
+      "limited_resources": "Ressources limitées pour la prévention"
+    }
+  },
+  "analysis": {
+    "title": "Analyse Comparative des Solutions",
+    "subtitle": "Évaluation selon les critères Désirabilité, Faisabilité, Viabilité",
+    "criteria": {
+      "desirability": "DÉSIRABILITÉ",
+      "feasibility": "FAISABILITÉ",
+      "viability": "VIABILITÉ"
+    },
+    "labels": {
+      "pros": "POUR",
+      "cons": "CONTRE",
+      "score": "SCORE TOTAL",
+      "recommendation": "SOLUTION RECOMMANDÉE"
+    },
+    "solutions": {
+      "mobile_app": {
+        "name": "Application Mobile",
+        "pros": [
+          "Interface utilisateur riche et intuitive",
+          "Fonctionnalités avancées (photos, géolocalisation)",
+          "Notifications push en temps réel",
+          "Capacité de stockage local des données"
+        ],
+        "cons": [
+          "Nécessite un smartphone (coûteux pour les agriculteurs)",
+          "Dépendant de la connectivité internet",
+          "Courbe d'apprentissage plus élevée",
+          "Maintenance et mises à jour complexes"
+        ]
+      },
+      "whatsapp_bot": {
+        "name": "WhatsApp Bot",
+        "pros": [
+          "Plateforme familière pour 85% des agriculteurs",
+          "Messagerie riche (texte, audio, images, vidéos)",
+          "Interface conversationnelle intuitive",
+          "Fonctionne sur téléphones basiques",
+          "Pas d'installation d'app requise",
+          "Support multilingue natif"
+        ],
+        "cons": [
+          "Dépendant de la disponibilité de WhatsApp",
+          "Limitations de l'API WhatsApp Business",
+          "Coûts par message pour volumes élevés"
+        ]
+      },
+      "sms_system": {
+        "name": "Système SMS",
+        "pros": [
+          "Compatibilité universelle (100% des téléphones)",
+          "Fonctionne sans internet",
+          "Très faible coût",
+          "Temps de réponse rapide",
+          "Support multilingue",
+          "Fiable et robuste"
+        ],
+        "cons": [
+          "Interface limitée (texte seulement)",
+          "Pas de médias riches",
+          "Expérience utilisateur basique",
+          "Difficile de créer des interactions complexes"
+        ]
+      }
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur lors du chargement",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
+  },
+  "whatsapp": {
+    "title": "Solution WhatsApp Bot",
+    "subtitle": "Messagerie riche et interactive pour l'alerte précoce",
+    "tabs": {
+      "simple": "Version Simple",
+      "technical": "Version Technique"
+    },
+    "simple": {
+      "title": "WhatsApp Bot - Explication Simple",
+      "description": "Un assistant intelligent sur WhatsApp qui aide les agriculteurs à protéger leurs cultures",
+      "how_it_works": "Comment ça marche",
+      "benefits": "Avantages",
+      "workflow": {
+        "step1": "L'agriculteur envoie un message ou une photo de sa culture",
+        "step2": "Le bot analyse et identifie les problèmes potentiels",
+        "step3": "Le bot envoie des conseils personnalisés et des alertes",
+        "step4": "L'agriculteur reçoit un suivi régulier"
+      }
+    },
+    "technical": {
+      "title": "WhatsApp Bot - Architecture Technique",
+      "description": "Solution complète intégrant l'API WhatsApp Business, l'IA et les données OpenEPI",
+      "architecture": "Architecture Technique",
+      "implementation": "Implémentation",
+      "features": "Fonctionnalités Clés"
+    },
+    "ecosystem": {
+      "title": "Écosystème WhatsApp Bot + SMS Secours"
+    }
+  },
+  "sms_secours": {
+    "title": "SMS Secours - Plan de Fallback",
+    "subtitle": "Solution de secours automatique avec TextBee",
+    "description": "Système de secours automatique qui active les alertes SMS lorsque WhatsApp n'est pas disponible",
+    "features": {
+      "automatic": {
+        "title": "Activation Automatique",
+        "description": "Se déclenche automatiquement en cas d'échec WhatsApp"
+      },
+      "textbee": {
+        "title": "Intégration TextBee",
+        "description": "API SMS fiable pour la livraison garantie"
+      },
+      "monitoring": {
+        "title": "Surveillance Continue",
+        "description": "Monitoring 24/7 de la disponibilité des services"
+      },
+      "fallback": {
+        "title": "Basculement Intelligent",
+        "description": "Basculement automatique entre les canaux"
+      }
+    }
+  }
+}

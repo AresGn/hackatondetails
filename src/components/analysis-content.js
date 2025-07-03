@@ -1,322 +1,236 @@
 // ===== IDEAS ANALYSIS CONTENT COMPONENT =====
 
-class AnalysisContent {
+class AnalysisContent extends BaseComponent {
     constructor() {
-        this.data = {
-            fr: {
-                title: "Analyse Comparative des Solutions",
-                subtitle: "Évaluation selon les critères Désirabilité, Faisabilité, Viabilité",
-                solutions: [
-                    {
-                        id: "mobile-app",
-                        name: "Application Mobile",
-                        icon: "fas fa-mobile-alt",
-                        scores: {
-                            desirability: { value: 5, max: 10, label: "DÉSIRABILITÉ" },
-                            feasibility: { value: 6, max: 10, label: "FAISABILITÉ" },
-                            viability: { value: 6, max: 10, label: "VIABILITÉ" }
-                        },
-                        total: 17,
-                        maxTotal: 30,
-                        pros: [
-                            "Interface utilisateur riche et intuitive",
-                            "Fonctionnalités avancées (photos, géolocalisation)",
-                            "Notifications push en temps réel",
-                            "Capacité de stockage local des données"
-                        ],
-                        cons: [
-                            "Nécessite un smartphone (coûteux pour les agriculteurs)",
-                            "Dépendant de la connectivité internet",
-                            "Courbe d'apprentissage plus élevée",
-                            "Maintenance et mises à jour complexes"
-                        ],
-                        openEpiIntegration: "API REST pour récupérer les prédictions de ravageurs et données météorologiques",
-                        hackathonFeasibility: "Complexe pour un hackathon de 48h - nécessite développement mobile natif"
-                    },
-                    {
-                        id: "whatsapp-bot",
-                        name: "WhatsApp Bot",
-                        icon: "fab fa-whatsapp",
-                        scores: {
-                            desirability: { value: 9, max: 10, label: "DÉSIRABILITÉ" },
-                            feasibility: { value: 10, max: 10, label: "FAISABILITÉ" },
-                            viability: { value: 9, max: 10, label: "VIABILITÉ" }
-                        },
-                        total: 28,
-                        maxTotal: 30,
-                        pros: [
-                            "Plateforme familière pour 85% des agriculteurs",
-                            "Messagerie riche (texte, audio, images, vidéos)",
-                            "Interface conversationnelle intuitive",
-                            "Intégration TextBee SMS comme fallback",
-                            "Pas besoin d'installation d'application",
-                            "Support multilingue natif"
-                        ],
-                        cons: [
-                            "Nécessite une connexion internet (mitigé par SMS fallback)",
-                            "Coûts WhatsApp Business API (compensés par l'efficacité)",
-                            "Dépendance à Meta/WhatsApp"
-                        ],
-                        openEpiIntegration: "Webhook OpenEPI → Traitement IA → Diffusion WhatsApp + SMS TextBee",
-                        hackathonFeasibility: "Optimal pour hackathon - APIs matures, documentation complète, écosystème riche",
-                        winner: true
-                    },
-                    {
-                        id: "textbee-sms",
-                        name: "TextBee SMS",
-                        icon: "fas fa-sms",
-                        scores: {
-                            desirability: { value: 7, max: 10, label: "DÉSIRABILITÉ" },
-                            feasibility: { value: 8, max: 10, label: "FAISABILITÉ" },
-                            viability: { value: 7, max: 10, label: "VIABILITÉ" }
-                        },
-                        total: 22,
-                        maxTotal: 30,
-                        pros: [
-                            "Compatible avec TOUS les téléphones",
-                            "Fonctionne sans internet",
-                            "Coût très faible avec TextBee",
-                            "Excellent comme système de fallback"
-                        ],
-                        cons: [
-                            "Interface limitée (texte uniquement)",
-                            "Pas de multimédia",
-                            "Expérience utilisateur basique",
-                            "Limitations de caractères (160 max)",
-                            "Pas d'interactivité avancée"
-                        ],
-                        openEpiIntegration: "API TextBee pour diffusion SMS automatisée en complément WhatsApp",
-                        hackathonFeasibility: "Bon comme solution de fallback - intégration simple avec WhatsApp Bot",
-                        recommended: false
-                    }
-                ],
-                recommendation: {
-                    title: "RECOMMANDATION HACKATHON",
-                    winner: "WhatsApp Bot",
-                    reason: "Le WhatsApp Bot est la solution gagnante avec 28/30 points. Il combine une excellente faisabilité technique (10/10), une forte désirabilité (9/10) et une viabilité économique solide (9/10). L'intégration TextBee SMS comme fallback garantit l'accessibilité universelle.",
-                    implementation: "Développement avec Node.js + WhatsApp Business API + TextBee SMS, intégration OpenEPI pour les alertes précoces, déploiement sur les cultures de Cacao, Maïs, Anacarde et Hévéa au Bénin et Côte d'Ivoire."
-                }
-            },
-            en: {
-                title: "Comparative Solutions Analysis",
-                subtitle: "Evaluation based on Desirability, Feasibility, Viability criteria",
-                solutions: [
-                    {
-                        id: "mobile-app",
-                        name: "Mobile Application",
-                        icon: "fas fa-mobile-alt",
-                        scores: {
-                            desirability: { value: 5, max: 10, label: "DESIRABILITY" },
-                            feasibility: { value: 6, max: 10, label: "FEASIBILITY" },
-                            viability: { value: 6, max: 10, label: "VIABILITY" }
-                        },
-                        total: 17,
-                        maxTotal: 30,
-                        pros: [
-                            "Rich and intuitive user interface",
-                            "Advanced features (photos, geolocation)",
-                            "Real-time push notifications",
-                            "Local data storage capability"
-                        ],
-                        cons: [
-                            "Requires smartphone (expensive for farmers)",
-                            "Dependent on internet connectivity",
-                            "Higher learning curve",
-                            "Complex maintenance and updates"
-                        ],
-                        openEpiIntegration: "REST API to retrieve pest predictions and weather data",
-                        hackathonFeasibility: "Complex for 48h hackathon - requires native mobile development"
-                    },
-                    {
-                        id: "whatsapp-bot",
-                        name: "WhatsApp Bot",
-                        icon: "fab fa-whatsapp",
-                        scores: {
-                            desirability: { value: 9, max: 10, label: "DESIRABILITY" },
-                            feasibility: { value: 10, max: 10, label: "FEASIBILITY" },
-                            viability: { value: 9, max: 10, label: "VIABILITY" }
-                        },
-                        total: 28,
-                        maxTotal: 30,
-                        pros: [
-                            "Familiar platform for 85% of farmers",
-                            "Rich messaging (text, audio, images, videos)",
-                            "Intuitive conversational interface",
-                            "TextBee SMS integration as fallback",
-                            "No app installation needed",
-                            "Native multilingual support"
-                        ],
-                        cons: [
-                            "Requires internet connection (mitigated by SMS fallback)",
-                            "WhatsApp Business API costs (offset by efficiency)",
-                            "Dependency on Meta/WhatsApp"
-                        ],
-                        openEpiIntegration: "OpenEPI Webhook → AI Processing → WhatsApp + TextBee SMS Broadcasting",
-                        hackathonFeasibility: "Optimal for hackathon - mature APIs, complete documentation, rich ecosystem",
-                        winner: true
-                    },
-                    {
-                        id: "textbee-sms",
-                        name: "TextBee SMS",
-                        icon: "fas fa-sms",
-                        scores: {
-                            desirability: { value: 7, max: 10, label: "DESIRABILITY" },
-                            feasibility: { value: 8, max: 10, label: "FEASIBILITY" },
-                            viability: { value: 7, max: 10, label: "VIABILITY" }
-                        },
-                        total: 22,
-                        maxTotal: 30,
-                        pros: [
-                            "Compatible with ALL phones",
-                            "Works without internet",
-                            "Very low cost with TextBee",
-                            "Excellent as fallback system"
-                        ],
-                        cons: [
-                            "Limited interface (text only)",
-                            "No multimedia",
-                            "Basic user experience",
-                            "Character limitations (160 max)",
-                            "No advanced interactivity"
-                        ],
-                        openEpiIntegration: "TextBee API for automated SMS broadcasting complementing WhatsApp Bot",
-                        hackathonFeasibility: "Good as fallback solution - simple integration with WhatsApp Bot",
-                        recommended: false
-                    }
-                ],
-                recommendation: {
-                    title: "HACKATHON RECOMMENDATION",
-                    winner: "WhatsApp Bot",
-                    reason: "WhatsApp Bot is the winning solution with 28/30 points. It combines excellent technical feasibility (10/10), strong desirability (9/10) and solid economic viability (9/10). TextBee SMS integration as fallback ensures universal accessibility.",
-                    implementation: "Development with Node.js + WhatsApp Business API + TextBee SMS, OpenEPI integration for early warnings, deployment on Cocoa, Maize, Cashew and Rubber crops in Benin and Côte d'Ivoire."
-                }
-            }
-        };
+        super();
+        this.containerId = 'analysis-content';
     }
 
-    render(language = 'fr') {
-        const data = this.data[language];
-        
-        return `
-            <div class="analysis-comparison">
-                <div class="analysis-intro">
-                    <p class="analysis-subtitle">${data.subtitle}</p>
-                </div>
-                
-                <div class="solutions-grid">
-                    ${data.solutions.map(solution => this.renderSolutionCard(solution, language)).join('')}
-                </div>
-                
-                <div class="recommendation-section">
-                    <h3>${data.recommendation.title}</h3>
-                    <div class="recommendation-content">
-                        <div class="winner-announcement">
-                            <i class="fas fa-trophy"></i>
-                            <span class="winner-name">${data.recommendation.winner}</span>
-                        </div>
-                        <p class="recommendation-reason">${data.recommendation.reason}</p>
-                        <div class="implementation-note">
-                            <h4>Implémentation recommandée :</h4>
-                            <p>${data.recommendation.implementation}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+    // Override from BaseComponent
+    onLanguageChanged(language) {
+        this.refreshContent();
     }
 
-    renderSolutionCard(solution, language) {
-        const scoreClass = (value) => {
-            if (value >= 8) return 'score-high';
-            if (value >= 6) return 'score-medium';
-            return 'score-low';
-        };
-
-        const badgeClass = solution.winner ? 'winner' : (solution.recommended ? 'recommended' : '');
-        const badge = solution.winner ?
-            (language === 'fr' ? 'SOLUTION GAGNANTE' : 'WINNING SOLUTION') :
-            (solution.recommended ?
-                (language === 'fr' ? 'Recommandé' : 'Recommended') :
-                '');
-
-        return `
-            <div class="solution-card ${badgeClass}">
-                <div class="solution-header">
-                    <i class="${solution.icon}"></i>
-                    <h3>${solution.name}</h3>
-                    ${badge ? `<span class="${badgeClass}-badge">${badge}</span>` : ''}
-                </div>
-                
-                <div class="solution-scores">
-                    <div class="score-item">
-                        <span class="score-label">${solution.scores.desirability.label}</span>
-                        <div class="score-bar">
-                            <div class="score-fill" style="width: ${(solution.scores.desirability.value / solution.scores.desirability.max) * 100}%"></div>
-                            <span class="score-value">${solution.scores.desirability.value}/${solution.scores.desirability.max}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="score-item">
-                        <span class="score-label">${solution.scores.feasibility.label}</span>
-                        <div class="score-bar">
-                            <div class="score-fill" style="width: ${(solution.scores.feasibility.value / solution.scores.feasibility.max) * 100}%"></div>
-                            <span class="score-value">${solution.scores.feasibility.value}/${solution.scores.feasibility.max}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="score-item">
-                        <span class="score-label">${solution.scores.viability.label}</span>
-                        <div class="score-bar">
-                            <div class="score-fill" style="width: ${(solution.scores.viability.value / solution.scores.viability.max) * 100}%"></div>
-                            <span class="score-value">${solution.scores.viability.value}/${solution.scores.viability.max}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="total-score ${badgeClass}">
-                        <span>SCORE TOTAL: ${solution.total}/${solution.maxTotal}</span>
-                    </div>
-                </div>
-                
-                <div class="pros-cons-section">
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h4><i class="fas fa-plus-circle"></i> ${language === 'fr' ? 'POUR' : 'PROS'}</h4>
-                            <ul>
-                                ${solution.pros.map(pro => `<li>${pro}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h4><i class="fas fa-minus-circle"></i> ${language === 'fr' ? 'CONTRE' : 'CONS'}</h4>
-                            <ul>
-                                ${solution.cons.map(con => `<li>${con}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="openepi-integration">
-                    <h5><i class="fas fa-plug"></i> ${language === 'fr' ? 'Intégration OpenEPI' : 'OpenEPI Integration'}</h5>
-                    <p>${solution.openEpiIntegration}</p>
-                </div>
-
-                <div class="hackathon-context">
-                    <h5><i class="fas fa-code"></i> ${language === 'fr' ? 'Faisabilité Hackathon' : 'Hackathon Feasibility'}</h5>
-                    <p>${solution.hackathonFeasibility}</p>
-                </div>
-            </div>
-        `;
-    }
-
-    getData(language = 'fr') {
-        return this.data[language];
-    }
-
-    updateContent(container, language = 'fr') {
+    // Override from BaseComponent
+    refreshContent() {
+        const container = document.getElementById(this.containerId);
         if (container) {
-            container.innerHTML = this.render(language);
+            container.innerHTML = this.render();
         }
     }
-}
 
-// Export for use in content loader
-window.AnalysisContent = AnalysisContent;
+    render() {
+        return `
+            <div class="analysis-framework">
+                <div class="analysis-header">
+                    <h2>${this.t('analysis.title')}</h2>
+                    <p class="analysis-subtitle">${this.t('analysis.subtitle')}</p>
+                </div>
+
+                <div class="criteria-legend">
+                    <div class="criterion">
+                        <span class="criterion-label desirability">${this.t('analysis.criteria.desirability')}</span>
+                    </div>
+                    <div class="criterion">
+                        <span class="criterion-label feasibility">${this.t('analysis.criteria.feasibility')}</span>
+                    </div>
+                    <div class="criterion">
+                        <span class="criterion-label viability">${this.t('analysis.criteria.viability')}</span>
+                    </div>
+                </div>
+
+                <div class="solutions-comparison">
+                    <!-- Mobile App Solution -->
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <div class="solution-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>${this.t('analysis.solutions.mobile_app.name')}</h3>
+                        </div>
+
+                        <div class="solution-scores">
+                            <div class="score-item desirability">
+                                <span class="score-label">${this.t('analysis.criteria.desirability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 50%"></div>
+                                    <span class="score-value">5/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item feasibility">
+                                <span class="score-label">${this.t('analysis.criteria.feasibility')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 60%"></div>
+                                    <span class="score-value">6/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item viability">
+                                <span class="score-label">${this.t('analysis.criteria.viability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 60%"></div>
+                                    <span class="score-value">6/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solution-details">
+                            <div class="pros-cons">
+                                <div class="pros">
+                                    <h4>${this.t('analysis.labels.pros')}</h4>
+                                    <ul>
+                                        <li>Interface utilisateur riche et intuitive</li>
+                                        <li>Fonctionnalités avancées (photos, géolocalisation)</li>
+                                        <li>Notifications push en temps réel</li>
+                                        <li>Capacité de stockage local des données</li>
+                                    </ul>
+                                </div>
+                                <div class="cons">
+                                    <h4>${this.t('analysis.labels.cons')}</h4>
+                                    <ul>
+                                        <li>Nécessite un smartphone (coûteux pour les agriculteurs)</li>
+                                        <li>Dépendant de la connectivité internet</li>
+                                        <li>Courbe d'apprentissage plus élevée</li>
+                                        <li>Maintenance et mises à jour complexes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="total-score">
+                                <span class="score-label">${this.t('analysis.labels.score')}</span>
+                                <span class="score-value">17/30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Bot Solution -->
+                    <div class="solution-card winner">
+                        <div class="solution-header">
+                            <div class="solution-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3>${this.t('analysis.solutions.whatsapp_bot.name')}</h3>
+                            <div class="winner-badge">
+                                <i class="fas fa-crown"></i>
+                                <span>${this.t('analysis.labels.recommendation')}</span>
+                            </div>
+                        </div>
+
+                        <div class="solution-scores">
+                            <div class="score-item desirability">
+                                <span class="score-label">${this.t('analysis.criteria.desirability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 90%"></div>
+                                    <span class="score-value">9/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item feasibility">
+                                <span class="score-label">${this.t('analysis.criteria.feasibility')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 100%"></div>
+                                    <span class="score-value">10/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item viability">
+                                <span class="score-label">${this.t('analysis.criteria.viability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 90%"></div>
+                                    <span class="score-value">9/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solution-details">
+                            <div class="pros-cons">
+                                <div class="pros">
+                                    <h4>${this.t('analysis.labels.pros')}</h4>
+                                    <ul>
+                                        <li>Plateforme familière pour 85% des agriculteurs</li>
+                                        <li>Messagerie riche (texte, audio, images, vidéos)</li>
+                                        <li>Interface conversationnelle intuitive</li>
+                                        <li>Fonctionne sur téléphones basiques</li>
+                                        <li>Pas d'installation d'app requise</li>
+                                        <li>Support multilingue natif</li>
+                                    </ul>
+                                </div>
+                                <div class="cons">
+                                    <h4>${this.t('analysis.labels.cons')}</h4>
+                                    <ul>
+                                        <li>Dépendant de la disponibilité de WhatsApp</li>
+                                        <li>Limitations de l'API WhatsApp Business</li>
+                                        <li>Coûts par message pour volumes élevés</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="total-score winner-score">
+                                <span class="score-label">${this.t('analysis.labels.score')}</span>
+                                <span class="score-value">28/30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SMS System Solution -->
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <div class="solution-icon">
+                                <i class="fas fa-sms"></i>
+                            </div>
+                            <h3>${this.t('analysis.solutions.sms_system.name')}</h3>
+                        </div>
+
+                        <div class="solution-scores">
+                            <div class="score-item desirability">
+                                <span class="score-label">${this.t('analysis.criteria.desirability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 70%"></div>
+                                    <span class="score-value">7/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item feasibility">
+                                <span class="score-label">${this.t('analysis.criteria.feasibility')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 90%"></div>
+                                    <span class="score-value">9/10</span>
+                                </div>
+                            </div>
+                            <div class="score-item viability">
+                                <span class="score-label">${this.t('analysis.criteria.viability')}</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" style="width: 80%"></div>
+                                    <span class="score-value">8/10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="solution-details">
+                            <div class="pros-cons">
+                                <div class="pros">
+                                    <h4>${this.t('analysis.labels.pros')}</h4>
+                                    <ul>
+                                        <li>Compatibilité universelle (100% des téléphones)</li>
+                                        <li>Fonctionne sans internet</li>
+                                        <li>Très faible coût</li>
+                                        <li>Temps de réponse rapide</li>
+                                        <li>Support multilingue</li>
+                                        <li>Fiable et robuste</li>
+                                    </ul>
+                                </div>
+                                <div class="cons">
+                                    <h4>${this.t('analysis.labels.cons')}</h4>
+                                    <ul>
+                                        <li>Interface limitée (texte seulement)</li>
+                                        <li>Pas de médias riches</li>
+                                        <li>Expérience utilisateur basique</li>
+                                        <li>Difficile de créer des interactions complexes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="total-score">
+                                <span class="score-label">${this.t('analysis.labels.score')}</span>
+                                <span class="score-value">24/30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}

@@ -108,12 +108,10 @@ class ContentLoader {
     }
     
     async loadProblemContent() {
-        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
-
         // Use the ProblemContent component if available
         if (window.ProblemContent) {
             const problemComponent = new window.ProblemContent();
-            return problemComponent.render(lang);
+            return problemComponent.render();
         }
 
         // Fallback content if component not loaded
@@ -126,12 +124,10 @@ class ContentLoader {
     }
     
     async loadAnalysisContent() {
-        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
-
         // Use the AnalysisContent component if available
         if (window.AnalysisContent) {
             const analysisComponent = new window.AnalysisContent();
-            return analysisComponent.render(lang);
+            return analysisComponent.render();
         }
 
         // Fallback content if component not loaded
