@@ -1,0 +1,470 @@
+/* ===== WHATSAPP SOLUTIONS STYLES ===== */
+
+/* Version Tabs */
+.version-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.version-tab {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.version-tab:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.version-tab.active {
+    background: #25d366;
+    color: white;
+    border-color: #25d366;
+}
+
+.version-tab i {
+    font-size: 1.1em;
+}
+
+/* Simple Version Styles */
+.whatsapp-simple {
+    padding: 20px;
+}
+
+.simple-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.simple-intro h2 {
+    color: #25d366;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.simple-description {
+    font-size: 1.2em;
+    color: #4a5568;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.workflow-simple h3 {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+.workflow-steps {
+    display: grid;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.workflow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.1);
+    border: 2px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+
+.workflow-step:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.15);
+}
+
+.step-number {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.step-content p {
+    color: #4a5568;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.step-example {
+    background: #f0fff4;
+    border: 1px solid #25d366;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-style: italic;
+    color: #2f855a;
+}
+
+.step-example i {
+    color: #25d366;
+}
+
+/* Benefits Grid */
+.benefits-grid h3 {
+    text-align: center;
+    color: #2d3748;
+    margin: 40px 0 25px;
+    font-size: 1.5em;
+}
+
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.benefit-card h4 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.benefit-card p {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* Technical Version Styles */
+.whatsapp-technical {
+    padding: 20px;
+}
+
+.technical-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.technical-intro h2 {
+    color: #2d3748;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.technical-description {
+    font-size: 1.1em;
+    color: #4a5568;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.architecture-section h3 {
+    color: #2d3748;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.architecture-component {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.architecture-component:hover {
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.component-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.component-header h4 {
+    color: #2d3748;
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.tech-badge {
+    background: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.component-description {
+    color: #4a5568;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.component-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    color: #718096;
+    font-style: italic;
+}
+
+.component-details i {
+    color: #667eea;
+}
+
+/* Business Model Section */
+.business-model-section h3 {
+    color: #2d3748;
+    margin: 40px 0 25px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    border-color: #25d366;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.15);
+}
+
+.pricing-card h4 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #25d366;
+    margin-bottom: 20px;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.pricing-card li {
+    padding: 5px 0;
+    color: #4a5568;
+    position: relative;
+    padding-left: 20px;
+}
+
+.pricing-card li::before {
+    content: "✓";
+    color: #25d366;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Revenue Streams */
+.revenue-streams h4 {
+    color: #2d3748;
+    margin: 30px 0 20px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.revenue-item {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #e2e8f0;
+}
+
+.revenue-item h5 {
+    color: #2d3748;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.revenue-item p {
+    color: #4a5568;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Ecosystem Section */
+.ecosystem-section {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.ecosystem-section h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+.network-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.network-node {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.network-node h4 {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.network-node p {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.impact-stats h4 {
+    text-align: center;
+    margin: 30px 0 20px;
+    font-size: 1.3em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-number {
+    font-size: 1.8em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-desc {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .workflow-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        align-self: center;
+    }
+    
+    .architecture-grid,
+    .pricing-grid,
+    .benefits-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .version-tabs {
+        flex-direction: column;
+    }
+    
+    .version-tab {
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+    }
+}

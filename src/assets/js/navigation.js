@@ -191,10 +191,26 @@ class NavigationManager {
                     if (e.target.closest('.submenu')) {
                         return;
                     }
-                    
+
                     e.preventDefault();
+
+                    // Special handling for solutions section - only open sidebar, don't show content
+                    const section = link.getAttribute('data-section');
+                    if (section === 'solutions') {
+                        // Just toggle the submenu and open sidebar if on mobile
+                        item.classList.toggle('open');
+
+                        // On mobile, ensure sidebar stays open to show submenu
+                        if (this.isMobile && !this.sidebar.classList.contains('open')) {
+                            this.openSidebar();
+                        }
+
+                        // Don't navigate to solutions section - user must choose submenu item
+                        return;
+                    }
+
                     item.classList.toggle('open');
-                    
+
                     // Close other submenus
                     this.submenuItems.forEach(otherItem => {
                         if (otherItem !== item) {

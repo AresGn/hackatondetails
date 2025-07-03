@@ -38,33 +38,6 @@ class AnalysisContent {
                         name: "WhatsApp Bot",
                         icon: "fab fa-whatsapp",
                         scores: {
-                            desirability: { value: 8, max: 10, label: "DÉSIRABILITÉ" },
-                            feasibility: { value: 9, max: 10, label: "FAISABILITÉ" },
-                            viability: { value: 8, max: 10, label: "VIABILITÉ" }
-                        },
-                        total: 25,
-                        maxTotal: 30,
-                        pros: [
-                            "Plateforme familière pour les utilisateurs",
-                            "Fonctionne sur tous types de téléphones",
-                            "Messagerie riche (texte, audio, images)",
-                            "Pas besoin d'installation d'application"
-                        ],
-                        cons: [
-                            "Dépendant de WhatsApp Business API",
-                            "Coûts potentiels pour les messages",
-                            "Limitations de l'interface conversationnelle",
-                            "Nécessite une connexion internet"
-                        ],
-                        openEpiIntegration: "Webhook pour recevoir les alertes et bot pour diffuser aux agriculteurs",
-                        hackathonFeasibility: "Très faisable - APIs bien documentées et exemples disponibles",
-                        recommended: true
-                    },
-                    {
-                        id: "ussd-sms",
-                        name: "USSD/SMS",
-                        icon: "fas fa-sms",
-                        scores: {
                             desirability: { value: 9, max: 10, label: "DÉSIRABILITÉ" },
                             feasibility: { value: 10, max: 10, label: "FAISABILITÉ" },
                             viability: { value: 9, max: 10, label: "VIABILITÉ" }
@@ -72,27 +45,56 @@ class AnalysisContent {
                         total: 28,
                         maxTotal: 30,
                         pros: [
+                            "Plateforme familière pour 85% des agriculteurs",
+                            "Messagerie riche (texte, audio, images, vidéos)",
+                            "Interface conversationnelle intuitive",
+                            "Intégration TextBee SMS comme fallback",
+                            "Pas besoin d'installation d'application",
+                            "Support multilingue natif"
+                        ],
+                        cons: [
+                            "Nécessite une connexion internet (mitigé par SMS fallback)",
+                            "Coûts WhatsApp Business API (compensés par l'efficacité)",
+                            "Dépendance à Meta/WhatsApp"
+                        ],
+                        openEpiIntegration: "Webhook OpenEPI → Traitement IA → Diffusion WhatsApp + SMS TextBee",
+                        hackathonFeasibility: "Optimal pour hackathon - APIs matures, documentation complète, écosystème riche",
+                        winner: true
+                    },
+                    {
+                        id: "textbee-sms",
+                        name: "TextBee SMS",
+                        icon: "fas fa-sms",
+                        scores: {
+                            desirability: { value: 7, max: 10, label: "DÉSIRABILITÉ" },
+                            feasibility: { value: 8, max: 10, label: "FAISABILITÉ" },
+                            viability: { value: 7, max: 10, label: "VIABILITÉ" }
+                        },
+                        total: 22,
+                        maxTotal: 30,
+                        pros: [
                             "Compatible avec TOUS les téléphones",
                             "Fonctionne sans internet",
-                            "Coût très faible",
-                            "Interface simple et accessible"
+                            "Coût très faible avec TextBee",
+                            "Excellent comme système de fallback"
                         ],
                         cons: [
                             "Interface limitée (texte uniquement)",
                             "Pas de multimédia",
                             "Expérience utilisateur basique",
-                            "Limitations de caractères"
+                            "Limitations de caractères (160 max)",
+                            "Pas d'interactivité avancée"
                         ],
-                        openEpiIntegration: "API pour récupérer données et système de diffusion SMS automatisé",
-                        hackathonFeasibility: "Parfait pour hackathon - technologies simples et robustes",
-                        winner: true
+                        openEpiIntegration: "API TextBee pour diffusion SMS automatisée en complément WhatsApp",
+                        hackathonFeasibility: "Bon comme solution de fallback - intégration simple avec WhatsApp Bot",
+                        recommended: false
                     }
                 ],
                 recommendation: {
                     title: "RECOMMANDATION HACKATHON",
-                    winner: "USSD/SMS",
-                    reason: "La solution USSD/SMS est recommandée pour le hackathon en raison de sa faisabilité technique élevée (10/10) et de son accessibilité universelle. Elle peut être développée rapidement en 48h avec des technologies éprouvées.",
-                    implementation: "Développement avec Node.js + Express pour l'API, intégration OpenEPI, et partenariat opérateur télécom pour USSD/SMS."
+                    winner: "WhatsApp Bot",
+                    reason: "Le WhatsApp Bot est la solution gagnante avec 28/30 points. Il combine une excellente faisabilité technique (10/10), une forte désirabilité (9/10) et une viabilité économique solide (9/10). L'intégration TextBee SMS comme fallback garantit l'accessibilité universelle.",
+                    implementation: "Développement avec Node.js + WhatsApp Business API + TextBee SMS, intégration OpenEPI pour les alertes précoces, déploiement sur les cultures de Cacao, Maïs, Anacarde et Hévéa au Bénin et Côte d'Ivoire."
                 }
             },
             en: {
@@ -130,33 +132,6 @@ class AnalysisContent {
                         name: "WhatsApp Bot",
                         icon: "fab fa-whatsapp",
                         scores: {
-                            desirability: { value: 8, max: 10, label: "DESIRABILITY" },
-                            feasibility: { value: 9, max: 10, label: "FEASIBILITY" },
-                            viability: { value: 8, max: 10, label: "VIABILITY" }
-                        },
-                        total: 25,
-                        maxTotal: 30,
-                        pros: [
-                            "Familiar platform for users",
-                            "Works on all phone types",
-                            "Rich messaging (text, audio, images)",
-                            "No app installation needed"
-                        ],
-                        cons: [
-                            "Dependent on WhatsApp Business API",
-                            "Potential costs for messages",
-                            "Conversational interface limitations",
-                            "Requires internet connection"
-                        ],
-                        openEpiIntegration: "Webhook to receive alerts and bot to broadcast to farmers",
-                        hackathonFeasibility: "Very feasible - well-documented APIs and examples available",
-                        recommended: true
-                    },
-                    {
-                        id: "ussd-sms",
-                        name: "USSD/SMS",
-                        icon: "fas fa-sms",
-                        scores: {
                             desirability: { value: 9, max: 10, label: "DESIRABILITY" },
                             feasibility: { value: 10, max: 10, label: "FEASIBILITY" },
                             viability: { value: 9, max: 10, label: "VIABILITY" }
@@ -164,27 +139,56 @@ class AnalysisContent {
                         total: 28,
                         maxTotal: 30,
                         pros: [
+                            "Familiar platform for 85% of farmers",
+                            "Rich messaging (text, audio, images, videos)",
+                            "Intuitive conversational interface",
+                            "TextBee SMS integration as fallback",
+                            "No app installation needed",
+                            "Native multilingual support"
+                        ],
+                        cons: [
+                            "Requires internet connection (mitigated by SMS fallback)",
+                            "WhatsApp Business API costs (offset by efficiency)",
+                            "Dependency on Meta/WhatsApp"
+                        ],
+                        openEpiIntegration: "OpenEPI Webhook → AI Processing → WhatsApp + TextBee SMS Broadcasting",
+                        hackathonFeasibility: "Optimal for hackathon - mature APIs, complete documentation, rich ecosystem",
+                        winner: true
+                    },
+                    {
+                        id: "textbee-sms",
+                        name: "TextBee SMS",
+                        icon: "fas fa-sms",
+                        scores: {
+                            desirability: { value: 7, max: 10, label: "DESIRABILITY" },
+                            feasibility: { value: 8, max: 10, label: "FEASIBILITY" },
+                            viability: { value: 7, max: 10, label: "VIABILITY" }
+                        },
+                        total: 22,
+                        maxTotal: 30,
+                        pros: [
                             "Compatible with ALL phones",
                             "Works without internet",
-                            "Very low cost",
-                            "Simple and accessible interface"
+                            "Very low cost with TextBee",
+                            "Excellent as fallback system"
                         ],
                         cons: [
                             "Limited interface (text only)",
                             "No multimedia",
                             "Basic user experience",
-                            "Character limitations"
+                            "Character limitations (160 max)",
+                            "No advanced interactivity"
                         ],
-                        openEpiIntegration: "API to retrieve data and automated SMS broadcasting system",
-                        hackathonFeasibility: "Perfect for hackathon - simple and robust technologies",
-                        winner: true
+                        openEpiIntegration: "TextBee API for automated SMS broadcasting complementing WhatsApp Bot",
+                        hackathonFeasibility: "Good as fallback solution - simple integration with WhatsApp Bot",
+                        recommended: false
                     }
                 ],
                 recommendation: {
                     title: "HACKATHON RECOMMENDATION",
-                    winner: "USSD/SMS",
-                    reason: "The USSD/SMS solution is recommended for the hackathon due to its high technical feasibility (10/10) and universal accessibility. It can be developed quickly in 48h with proven technologies.",
-                    implementation: "Development with Node.js + Express for API, OpenEPI integration, and telecom operator partnership for USSD/SMS."
+                    winner: "WhatsApp Bot",
+                    reason: "WhatsApp Bot is the winning solution with 28/30 points. It combines excellent technical feasibility (10/10), strong desirability (9/10) and solid economic viability (9/10). TextBee SMS integration as fallback ensures universal accessibility.",
+                    implementation: "Development with Node.js + WhatsApp Business API + TextBee SMS, OpenEPI integration for early warnings, deployment on Cocoa, Maize, Cashew and Rubber crops in Benin and Côte d'Ivoire."
                 }
             }
         };
@@ -229,7 +233,11 @@ class AnalysisContent {
         };
 
         const badgeClass = solution.winner ? 'winner' : (solution.recommended ? 'recommended' : '');
-        const badge = solution.winner ? 'Gagnant' : (solution.recommended ? 'Recommandé' : '');
+        const badge = solution.winner ?
+            (language === 'fr' ? 'SOLUTION GAGNANTE' : 'WINNING SOLUTION') :
+            (solution.recommended ?
+                (language === 'fr' ? 'Recommandé' : 'Recommended') :
+                '');
 
         return `
             <div class="solution-card ${badgeClass}">
@@ -272,13 +280,13 @@ class AnalysisContent {
                 <div class="pros-cons-section">
                     <div class="pros-cons">
                         <div class="pros">
-                            <h4><i class="fas fa-plus-circle"></i> POUR</h4>
+                            <h4><i class="fas fa-plus-circle"></i> ${language === 'fr' ? 'POUR' : 'PROS'}</h4>
                             <ul>
                                 ${solution.pros.map(pro => `<li>${pro}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="cons">
-                            <h4><i class="fas fa-minus-circle"></i> CONTRE</h4>
+                            <h4><i class="fas fa-minus-circle"></i> ${language === 'fr' ? 'CONTRE' : 'CONS'}</h4>
                             <ul>
                                 ${solution.cons.map(con => `<li>${con}</li>`).join('')}
                             </ul>
@@ -287,12 +295,12 @@ class AnalysisContent {
                 </div>
                 
                 <div class="openepi-integration">
-                    <h5><i class="fas fa-plug"></i> Intégration OpenEPI</h5>
+                    <h5><i class="fas fa-plug"></i> ${language === 'fr' ? 'Intégration OpenEPI' : 'OpenEPI Integration'}</h5>
                     <p>${solution.openEpiIntegration}</p>
                 </div>
-                
+
                 <div class="hackathon-context">
-                    <h5><i class="fas fa-code"></i> Faisabilité Hackathon</h5>
+                    <h5><i class="fas fa-code"></i> ${language === 'fr' ? 'Faisabilité Hackathon' : 'Hackathon Feasibility'}</h5>
                     <p>${solution.hackathonFeasibility}</p>
                 </div>
             </div>

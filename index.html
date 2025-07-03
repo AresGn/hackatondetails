@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="src/assets/css/main.css">
     <link rel="stylesheet" href="src/assets/css/navigation.css">
     <link rel="stylesheet" href="src/assets/css/responsive.css">
+    <link rel="stylesheet" href="src/assets/css/whatsapp-solutions.css">
+    <link rel="stylesheet" href="src/assets/css/ecosystem.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -59,15 +61,15 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="#ussd-sms" class="nav-link" data-section="ussd-sms">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span data-translate="nav_ussd_sms">USSD/SMS</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="#whatsapp" class="nav-link" data-section="whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             <span data-translate="nav_whatsapp">WhatsApp Bot</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sms-secours" class="nav-link" data-section="sms-secours">
+                            <i class="fas fa-sms"></i>
+                            <span data-translate="nav_sms_secours">SMS Secours</span>
                         </a>
                     </li>
                 </ul>
@@ -115,7 +117,7 @@
                         <i class="fas fa-user-farmer"></i>
                     </div>
                     <h3 data-translate="overview_user_title">Utilisateur Cible</h3>
-                    <p data-translate="overview_user_desc">Ablawa, 42 ans, productrice de maïs au Togo avec 3 hectares et 5 enfants à charge</p>
+                    <p data-translate="overview_user_desc">Ablawa, 42 ans, productrice de Cacao au Togo avec 3 hectares et 5 enfants à charge</p>
                 </div>
                 <div class="overview-card">
                     <div class="card-icon">
@@ -160,30 +162,24 @@
         <section id="solutions" class="content-section">
             <div class="section-header">
                 <h2 data-translate="solutions_title">Solutions Techniques</h2>
-                <p data-translate="solutions_subtitle">Architectures détaillées pour chaque approche</p>
+                <p data-translate="solutions_subtitle">Sélectionnez une solution dans le menu pour voir les détails</p>
             </div>
-            <div class="solutions-tabs">
-                <button class="tab-btn active" data-tab="ussd-sms">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span data-translate="tab_ussd_sms">USSD/SMS</span>
-                </button>
-                <button class="tab-btn" data-tab="whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span data-translate="tab_whatsapp">WhatsApp Bot</span>
-                </button>
-            </div>
-            <div id="solutions-content">
-                <!-- Content will be loaded dynamically -->
+            <div class="solutions-placeholder">
+                <div class="placeholder-content">
+                    <i class="fas fa-arrow-left" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 data-translate="solutions_placeholder_title">Choisissez une solution</h3>
+                    <p data-translate="solutions_placeholder_desc">Utilisez le menu de navigation pour sélectionner WhatsApp Bot ou SMS Secours et découvrir les détails techniques de chaque solution.</p>
+                </div>
             </div>
         </section>
 
-        <!-- USSD/SMS Section -->
-        <section id="ussd-sms" class="content-section">
+        <!-- SMS Secours Section -->
+        <section id="sms-secours" class="content-section">
             <div class="section-header">
-                <h2 data-translate="ussd_title">Solution USSD/SMS</h2>
-                <p data-translate="ussd_subtitle">Technologie universelle pour tous les téléphones</p>
+                <h2 data-translate="sms_secours_title">SMS Secours - Plan de Fallback</h2>
+                <p data-translate="sms_secours_subtitle">Solution de secours automatique avec TextBee</p>
             </div>
-            <div id="ussd-content">
+            <div id="sms-secours-content">
                 <!-- Content will be loaded dynamically -->
             </div>
         </section>
@@ -214,14 +210,25 @@
     <!-- Mobile Menu Overlay -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
 
-    <!-- Scripts -->
+    <!-- Scripts - Load in correct order -->
     <script src="src/assets/js/translations.js"></script>
     <script src="src/components/problem-content.js"></script>
     <script src="src/components/analysis-content.js"></script>
-    <script src="src/components/ussd-sms-content.js"></script>
+    <script src="src/components/sms-secours-content.js"></script>
     <script src="src/components/whatsapp-content.js"></script>
+    <script src="src/components/ecosystem-content.js"></script>
     <script src="src/assets/js/navigation.js"></script>
     <script src="src/assets/js/content-loader.js"></script>
-    <script src="src/assets/js/main.js"></script>
+    <script>
+        // Ensure all components are loaded before initializing main app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Small delay to ensure all scripts are fully loaded
+            setTimeout(function() {
+                const script = document.createElement('script');
+                script.src = 'src/assets/js/main.js';
+                document.body.appendChild(script);
+            }, 100);
+        });
+    </script>
 </body>
 </html>

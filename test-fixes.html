@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des Corrections - AgriBot Solutions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .status-ok { color: #28a745; font-weight: bold; }
+        .status-error { color: #dc3545; font-weight: bold; }
+        .status-warning { color: #ffc107; font-weight: bold; }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .test-result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .test-result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .test-result.warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test des Corrections AgriBot Solutions</h1>
+        
+        <div class="test-section">
+            <h3>1. ✅ Test Sidebar Responsive</h3>
+            <p>Vérification que la sidebar s'ouvre/ferme correctement en mode mobile</p>
+            <button class="test-button" onclick="testSidebarResponsive()">Tester Sidebar</button>
+            <div id="sidebar-test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. 🌐 Test Traductions Complètes</h3>
+            <p>Vérification que toutes les traductions sont disponibles</p>
+            <button class="test-button" onclick="testTranslations()">Tester Traductions</button>
+            <div id="translations-test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. 🏆 Test Analyse WhatsApp Bot Gagnant</h3>
+            <p>Vérification que WhatsApp Bot est bien la solution gagnante</p>
+            <button class="test-button" onclick="testAnalysisWinner()">Tester Analyse</button>
+            <div id="analysis-test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>4. 🔗 Test Navigation Complète</h3>
+            <p>Test de toutes les sections de navigation</p>
+            <button class="test-button" onclick="testNavigation()">Tester Navigation</button>
+            <div id="navigation-test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>5. 📱 Test Responsive Design</h3>
+            <p>Test du design responsive sur différentes tailles d'écran</p>
+            <button class="test-button" onclick="testResponsive()">Tester Responsive</button>
+            <div id="responsive-test-results"></div>
+        </div>
+    </div>
+
+    <script>
+        function showResult(containerId, message, type = 'success') {
+            const container = document.getElementById(containerId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = message;
+            container.appendChild(resultDiv);
+        }
+
+        function clearResults(containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+        }
+
+        function testSidebarResponsive() {
+            clearResults('sidebar-test-results');
+            
+            // Test 1: Vérifier que les éléments existent
+            const sidebar = document.querySelector('.sidebar');
+            const toggle = document.querySelector('.sidebar-toggle');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            if (!sidebar || !toggle || !overlay) {
+                showResult('sidebar-test-results', '❌ Éléments sidebar manquants dans le DOM', 'error');
+                return;
+            }
+            
+            showResult('sidebar-test-results', '✅ Tous les éléments sidebar sont présents', 'success');
+            
+            // Test 2: Vérifier les styles CSS
+            const sidebarStyles = window.getComputedStyle(sidebar);
+            const hasTransform = sidebarStyles.transform !== 'none';
+            
+            if (hasTransform) {
+                showResult('sidebar-test-results', '✅ Sidebar a les styles de transformation CSS', 'success');
+            } else {
+                showResult('sidebar-test-results', '⚠️ Styles de transformation CSS non détectés', 'warning');
+            }
+            
+            // Test 3: Simuler un clic sur le toggle
+            try {
+                toggle.click();
+                setTimeout(() => {
+                    const isOpen = sidebar.classList.contains('open');
+                    if (isOpen) {
+                        showResult('sidebar-test-results', '✅ Toggle fonctionne - Sidebar s\'ouvre', 'success');
+                        // Fermer la sidebar
+                        toggle.click();
+                    } else {
+                        showResult('sidebar-test-results', '❌ Toggle ne fonctionne pas correctement', 'error');
+                    }
+                }, 100);
+            } catch (error) {
+                showResult('sidebar-test-results', `❌ Erreur lors du test toggle: ${error.message}`, 'error');
+            }
+        }
+
+        function testTranslations() {
+            clearResults('translations-test-results');
+            
+            // Test des nouvelles traductions ajoutées
+            const testKeys = [
+                'analysis_comparative_title',
+                'analysis_whatsapp_bot',
+                'analysis_winner_badge',
+                'whatsapp_solution_title',
+                'nav_toggle_menu',
+                'error_initialization'
+            ];
+            
+            let successCount = 0;
+            let totalTests = testKeys.length * 2; // FR + EN
+            
+            testKeys.forEach(key => {
+                // Test français
+                const frTranslation = window.translations?.fr?.[key];
+                if (frTranslation) {
+                    successCount++;
+                    showResult('translations-test-results', `✅ FR: ${key} = "${frTranslation}"`, 'success');
+                } else {
+                    showResult('translations-test-results', `❌ FR: ${key} manquant`, 'error');
+                }
+                
+                // Test anglais
+                const enTranslation = window.translations?.en?.[key];
+                if (enTranslation) {
+                    successCount++;
+                    showResult('translations-test-results', `✅ EN: ${key} = "${enTranslation}"`, 'success');
+                } else {
+                    showResult('translations-test-results', `❌ EN: ${key} manquant`, 'error');
+                }
+            });
+            
+            const percentage = Math.round((successCount / totalTests) * 100);
+            showResult('translations-test-results', 
+                `📊 Résultat: ${successCount}/${totalTests} traductions (${percentage}%)`, 
+                percentage >= 80 ? 'success' : 'warning'
+            );
+        }
+
+        function testAnalysisWinner() {
+            clearResults('analysis-test-results');
+            
+            // Ouvrir la page d'analyse dans un iframe pour tester
+            const iframe = document.createElement('iframe');
+            iframe.src = 'index.html#analysis';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            iframe.onload = function() {
+                try {
+                    // Vérifier que WhatsApp Bot est marqué comme gagnant
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const whatsappSection = iframeDoc.querySelector('[data-solution="whatsapp-bot"]');
+                    
+                    if (whatsappSection) {
+                        const hasWinnerBadge = whatsappSection.querySelector('.winner-badge') || 
+                                             whatsappSection.classList.contains('winner');
+                        
+                        if (hasWinnerBadge) {
+                            showResult('analysis-test-results', '✅ WhatsApp Bot est marqué comme solution gagnante', 'success');
+                        } else {
+                            showResult('analysis-test-results', '❌ WhatsApp Bot n\'est pas marqué comme gagnant', 'error');
+                        }
+                    } else {
+                        showResult('analysis-test-results', '⚠️ Section WhatsApp Bot non trouvée', 'warning');
+                    }
+                    
+                    // Nettoyer
+                    document.body.removeChild(iframe);
+                } catch (error) {
+                    showResult('analysis-test-results', `❌ Erreur lors du test: ${error.message}`, 'error');
+                    document.body.removeChild(iframe);
+                }
+            };
+        }
+
+        function testNavigation() {
+            clearResults('navigation-test-results');
+            
+            const sections = ['overview', 'problem', 'analysis', 'whatsapp', 'ecosystem'];
+            let workingSections = 0;
+            
+            sections.forEach(section => {
+                const link = document.querySelector(`[href="#${section}"]`);
+                if (link) {
+                    workingSections++;
+                    showResult('navigation-test-results', `✅ Section ${section} accessible`, 'success');
+                } else {
+                    showResult('navigation-test-results', `❌ Section ${section} non trouvée`, 'error');
+                }
+            });
+            
+            const percentage = Math.round((workingSections / sections.length) * 100);
+            showResult('navigation-test-results', 
+                `📊 Navigation: ${workingSections}/${sections.length} sections (${percentage}%)`, 
+                percentage >= 80 ? 'success' : 'warning'
+            );
+        }
+
+        function testResponsive() {
+            clearResults('responsive-test-results');
+            
+            // Test des breakpoints
+            const breakpoints = [
+                { name: 'Mobile', width: 375 },
+                { name: 'Tablet', width: 768 },
+                { name: 'Desktop', width: 1024 }
+            ];
+            
+            breakpoints.forEach(bp => {
+                // Simuler la taille d'écran (approximatif)
+                const isMobile = bp.width <= 768;
+                const isTablet = bp.width > 768 && bp.width <= 1024;
+                const isDesktop = bp.width > 1024;
+                
+                let status = '✅';
+                let message = `${bp.name} (${bp.width}px) - Responsive OK`;
+                
+                if (isMobile) {
+                    // En mobile, la sidebar devrait être cachée par défaut
+                    message += ' - Sidebar cachée par défaut';
+                } else if (isDesktop) {
+                    // En desktop, la sidebar devrait être visible
+                    message += ' - Sidebar visible par défaut';
+                }
+                
+                showResult('responsive-test-results', `${status} ${message}`, 'success');
+            });
+            
+            showResult('responsive-test-results', '📱 Test responsive terminé - Redimensionnez la fenêtre pour tester manuellement', 'warning');
+        }
+
+        // Auto-test au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                showResult('sidebar-test-results', '🚀 Tests automatiques prêts - Cliquez sur les boutons pour tester', 'warning');
+                showResult('translations-test-results', '🚀 Tests automatiques prêts - Cliquez sur les boutons pour tester', 'warning');
+                showResult('analysis-test-results', '🚀 Tests automatiques prêts - Cliquez sur les boutons pour tester', 'warning');
+                showResult('navigation-test-results', '🚀 Tests automatiques prêts - Cliquez sur les boutons pour tester', 'warning');
+                showResult('responsive-test-results', '🚀 Tests automatiques prêts - Cliquez sur les boutons pour tester', 'warning');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

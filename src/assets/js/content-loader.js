@@ -29,7 +29,8 @@ class ContentLoader {
         }
         
         // Check cache first
-        const cachedContent = this.contentCache.get(`${sectionId}-${getCurrentLanguage()}`);
+        const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
+        const cachedContent = this.contentCache.get(`${sectionId}-${currentLang}`);
         if (cachedContent) {
             container.innerHTML = cachedContent;
             this.initializeInteractiveElements(container);
@@ -53,8 +54,8 @@ class ContentLoader {
                 case 'solutions':
                     content = await this.loadSolutionsContent();
                     break;
-                case 'ussd-sms':
-                    content = await this.loadUssdSmsContent();
+                case 'sms-secours':
+                    content = await this.loadSmsSecoursContent();
                     break;
                 case 'whatsapp':
                     content = await this.loadWhatsAppContent();
@@ -67,7 +68,8 @@ class ContentLoader {
             }
             
             // Cache the content
-            this.contentCache.set(`${sectionId}-${getCurrentLanguage()}`, content);
+            const currentLang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
+            this.contentCache.set(`${sectionId}-${currentLang}`, content);
             
             // Display content
             container.innerHTML = content;
@@ -82,28 +84,31 @@ class ContentLoader {
     }
     
     showLoading(container) {
+        const loadingText = (typeof getTranslation === 'function') ? getTranslation('loading') : 'Chargement...';
         container.innerHTML = `
             <div class="loading-state">
                 <div class="loading-spinner"></div>
-                <p>${getTranslation('loading')}</p>
+                <p>${loadingText}</p>
             </div>
         `;
     }
-    
+
     showError(container) {
+        const errorText = (typeof getTranslation === 'function') ? getTranslation('error') : 'Erreur lors du chargement';
+        const retryText = (typeof getTranslation === 'function') ? getTranslation('retry') : 'Réessayer';
         container.innerHTML = `
             <div class="error-state">
                 <i class="fas fa-exclamation-triangle"></i>
-                <p>${getTranslation('error')}</p>
+                <p>${errorText}</p>
                 <button onclick="location.reload()" class="retry-btn">
-                    ${getTranslation('retry')}
+                    ${retryText}
                 </button>
             </div>
         `;
     }
     
     async loadProblemContent() {
-        const lang = getCurrentLanguage();
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
 
         // Use the ProblemContent component if available
         if (window.ProblemContent) {
@@ -121,7 +126,7 @@ class ContentLoader {
     }
     
     async loadAnalysisContent() {
-        const lang = getCurrentLanguage();
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
 
         // Use the AnalysisContent component if available
         if (window.AnalysisContent) {
@@ -146,31 +151,29 @@ class ContentLoader {
         `;
     }
     
-    async loadUssdSmsContent() {
-        const lang = getCurrentLanguage();
+    async loadSmsSecoursContent() {
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
 
-        // Use the UssdSmsContent component if available
-        if (window.UssdSmsContent) {
-            const ussdSmsComponent = new window.UssdSmsContent();
-            return ussdSmsComponent.render(lang);
+        // Use the SMSSecoursContent component if available
+        if (window.smsSecoursContent) {
+            return window.smsSecoursContent.render(lang);
         }
 
         // Fallback content if component not loaded
         return `
             <div class="loading-state">
                 <div class="loading-spinner"></div>
-                <p>Chargement de la solution USSD/SMS...</p>
+                <p>Chargement de la solution SMS Secours...</p>
             </div>
         `;
     }
     
     async loadWhatsAppContent() {
-        const lang = getCurrentLanguage();
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
 
         // Use the WhatsAppContent component if available
-        if (window.WhatsAppContent) {
-            const whatsappComponent = new window.WhatsAppContent();
-            return whatsappComponent.render(lang);
+        if (window.whatsAppContent) {
+            return window.whatsAppContent.render(lang, 'simple');
         }
 
         // Fallback content if component not loaded
@@ -183,10 +186,19 @@ class ContentLoader {
     }
     
     async loadEcosystemContent() {
+        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
+
+        // Use the EcosystemContent component if available
+        if (window.EcosystemContent) {
+            const ecosystemComponent = new window.EcosystemContent();
+            return ecosystemComponent.render(lang);
+        }
+
+        // Fallback content if component not loaded
         return `
-            <div class="ecosystem-overview">
-                <h3>${getTranslation('business_model')}</h3>
-                <p>Vision complète de l'écosystème AgriBot...</p>
+            <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Chargement de l'écosystème AgriBot...</p>
             </div>
         `;
     }
@@ -226,11 +238,17 @@ class ContentLoader {
         let content = '';
         
         switch (tabId) {
-            case 'ussd-sms':
-                content = await this.loadUssdSmsContent();
+            case 'whatsapp-technique':
+                if (window.whatsAppContent) {
+                    const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
+                    content = window.whatsAppContent.renderTechnical(lang);
+                }
                 break;
-            case 'whatsapp':
-                content = await this.loadWhatsAppContent();
+            case 'whatsapp-simple':
+                if (window.whatsAppContent) {
+                    const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
+                    content = window.whatsAppContent.renderSimple(lang);
+                }
                 break;
         }
         

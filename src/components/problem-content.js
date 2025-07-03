@@ -7,7 +7,7 @@ class ProblemContent {
                 title: "Cadre de Définition du Problème",
                 user: {
                     label: "UTILISATEUR",
-                    content: "Petits agriculteurs comme Ablawa, productrice de maïs de 42 ans en zone rurale du Togo qui gère 3 hectares et soutient 5 enfants",
+                    content: "Petits agriculteurs comme Ablawa, productrice de maïs de 42 ans en zone rurale du Toqui gère 3 hectares et soutient 5 enfants",
                     persona: {
                         name: "Ablawa",
                         age: "42 ans",

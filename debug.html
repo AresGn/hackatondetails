@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - AgriBot Solutions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+        }
+        .debug-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .debug-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .debug-section h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .status-ok { color: #28a745; }
+        .status-error { color: #dc3545; }
+        .status-warning { color: #ffc107; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>🔧 Debug AgriBot Solutions</h1>
+        
+        <div class="debug-section">
+            <h3>📋 Statut des Scripts</h3>
+            <div id="script-status"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>🔧 Fonctions Globales</h3>
+            <div id="global-functions"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>🎯 Composants</h3>
+            <div id="components-status"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>❌ Erreurs JavaScript</h3>
+            <div id="js-errors"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>🧪 Tests</h3>
+            <button class="test-button" onclick="testTranslations()">Test Traductions</button>
+            <button class="test-button" onclick="testNavigation()">Test Navigation</button>
+            <button class="test-button" onclick="testContentLoader()">Test Content Loader</button>
+            <button class="test-button" onclick="testMainApp()">Test App Principale</button>
+            <div id="test-results"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>📊 Informations Système</h3>
+            <div id="system-info"></div>
+        </div>
+    </div>
+
+    <script>
+        // Capture JavaScript errors
+        const jsErrors = [];
+        window.addEventListener('error', (e) => {
+            jsErrors.push({
+                message: e.message,
+                filename: e.filename,
+                lineno: e.lineno,
+                colno: e.colno,
+                error: e.error
+            });
+            updateErrorDisplay();
+        });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            jsErrors.push({
+                message: 'Unhandled Promise Rejection: ' + e.reason,
+                type: 'promise'
+            });
+            updateErrorDisplay();
+        });
+
+        function updateErrorDisplay() {
+            const errorDiv = document.getElementById('js-errors');
+            if (jsErrors.length === 0) {
+                errorDiv.innerHTML = '<span class="status-ok">✅ Aucune erreur JavaScript détectée</span>';
+            } else {
+                errorDiv.innerHTML = jsErrors.map(error => 
+                    `<div class="status-error">❌ ${error.message} ${error.filename ? `(${error.filename}:${error.lineno})` : ''}</div>`
+                ).join('');
+            }
+        }
+
+        function checkScriptStatus() {
+            const scripts = [
+                'translations.js',
+                'navigation.js', 
+                'content-loader.js',
+                'main.js',
+                'problem-content.js',
+                'analysis-content.js',
+                'ussd-sms-content.js',
+                'whatsapp-content.js'
+            ];
+            
+            const statusDiv = document.getElementById('script-status');
+            let html = '';
+            
+            scripts.forEach(script => {
+                const scriptElements = document.querySelectorAll(`script[src*="${script}"]`);
+                if (scriptElements.length > 0) {
+                    html += `<div class="status-ok">✅ ${script} - Chargé</div>`;
+                } else {
+                    html += `<div class="status-error">❌ ${script} - Non trouvé</div>`;
+                }
+            });
+            
+            statusDiv.innerHTML = html;
+        }
+
+        function checkGlobalFunctions() {
+            const functions = [
+                'switchLanguage',
+                'getTranslation', 
+                'getCurrentLanguage',
+                'initTranslations'
+            ];
+            
+            const statusDiv = document.getElementById('global-functions');
+            let html = '';
+            
+            functions.forEach(func => {
+                if (typeof window[func] === 'function') {
+                    html += `<div class="status-ok">✅ ${func} - Disponible</div>`;
+                } else {
+                    html += `<div class="status-error">❌ ${func} - Non disponible</div>`;
+                }
+            });
+            
+            statusDiv.innerHTML = html;
+        }
+
+        function checkComponents() {
+            const components = [
+                'navigationManager',
+                'contentLoader',
+                'agribotApp',
+                'ProblemContent',
+                'AnalysisContent',
+                'UssdSmsContent',
+                'WhatsAppContent'
+            ];
+            
+            const statusDiv = document.getElementById('components-status');
+            let html = '';
+            
+            components.forEach(comp => {
+                if (window[comp]) {
+                    html += `<div class="status-ok">✅ ${comp} - Disponible</div>`;
+                } else {
+                    html += `<div class="status-warning">⚠️ ${comp} - Non disponible</div>`;
+                }
+            });
+            
+            statusDiv.innerHTML = html;
+        }
+
+        function showSystemInfo() {
+            const info = {
+                'User Agent': navigator.userAgent,
+                'URL': window.location.href,
+                'Protocol': window.location.protocol,
+                'Host': window.location.host,
+                'Pathname': window.location.pathname,
+                'Language': navigator.language,
+                'Online': navigator.onLine,
+                'Cookies Enabled': navigator.cookieEnabled,
+                'Local Storage': typeof(Storage) !== "undefined"
+            };
+            
+            const infoDiv = document.getElementById('system-info');
+            let html = '';
+            
+            for (const [key, value] of Object.entries(info)) {
+                html += `<div><strong>${key}:</strong> ${value}</div>`;
+            }
+            
+            infoDiv.innerHTML = html;
+        }
+
+        // Test functions
+        function testTranslations() {
+            const results = document.getElementById('test-results');
+            let html = '<h4>Test Traductions:</h4>';
+            
+            try {
+                if (typeof getCurrentLanguage === 'function') {
+                    const lang = getCurrentLanguage();
+                    html += `<div class="status-ok">✅ Langue actuelle: ${lang}</div>`;
+                } else {
+                    html += `<div class="status-error">❌ getCurrentLanguage non disponible</div>`;
+                }
+                
+                if (typeof getTranslation === 'function') {
+                    const translation = getTranslation('app_title');
+                    html += `<div class="status-ok">✅ Traduction test: ${translation}</div>`;
+                } else {
+                    html += `<div class="status-error">❌ getTranslation non disponible</div>`;
+                }
+            } catch (error) {
+                html += `<div class="status-error">❌ Erreur: ${error.message}</div>`;
+            }
+            
+            results.innerHTML = html;
+        }
+
+        function testNavigation() {
+            const results = document.getElementById('test-results');
+            let html = '<h4>Test Navigation:</h4>';
+            
+            try {
+                if (window.navigationManager) {
+                    html += `<div class="status-ok">✅ NavigationManager disponible</div>`;
+                    const currentSection = window.navigationManager.getCurrentSection();
+                    html += `<div class="status-ok">✅ Section actuelle: ${currentSection}</div>`;
+                } else {
+                    html += `<div class="status-error">❌ NavigationManager non disponible</div>`;
+                }
+            } catch (error) {
+                html += `<div class="status-error">❌ Erreur: ${error.message}</div>`;
+            }
+            
+            results.innerHTML = html;
+        }
+
+        function testContentLoader() {
+            const results = document.getElementById('test-results');
+            let html = '<h4>Test Content Loader:</h4>';
+            
+            try {
+                if (window.contentLoader) {
+                    html += `<div class="status-ok">✅ ContentLoader disponible</div>`;
+                } else {
+                    html += `<div class="status-error">❌ ContentLoader non disponible</div>`;
+                }
+            } catch (error) {
+                html += `<div class="status-error">❌ Erreur: ${error.message}</div>`;
+            }
+            
+            results.innerHTML = html;
+        }
+
+        function testMainApp() {
+            const results = document.getElementById('test-results');
+            let html = '<h4>Test App Principale:</h4>';
+            
+            try {
+                if (window.agribotApp) {
+                    html += `<div class="status-ok">✅ AgribotApp disponible</div>`;
+                    const isReady = window.agribotApp.isReady();
+                    html += `<div class="${isReady ? 'status-ok' : 'status-warning'}">
+                        ${isReady ? '✅' : '⚠️'} App initialisée: ${isReady}</div>`;
+                    const version = window.agribotApp.getVersion();
+                    html += `<div class="status-ok">✅ Version: ${version}</div>`;
+                } else {
+                    html += `<div class="status-error">❌ AgribotApp non disponible</div>`;
+                }
+            } catch (error) {
+                html += `<div class="status-error">❌ Erreur: ${error.message}</div>`;
+            }
+            
+            results.innerHTML = html;
+        }
+
+        // Initialize debug page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateErrorDisplay();
+            checkScriptStatus();
+            checkGlobalFunctions();
+            checkComponents();
+            showSystemInfo();
+            
+            // Refresh components status every 2 seconds for the first 10 seconds
+            let refreshCount = 0;
+            const refreshInterval = setInterval(() => {
+                checkComponents();
+                refreshCount++;
+                if (refreshCount >= 5) {
+                    clearInterval(refreshInterval);
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test WhatsApp Bot Gagnant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: #f8f9fa;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .score-display {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .winner-display {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🏆 Test WhatsApp Bot Solution Gagnante</h1>
+        
+        <div class="test-section">
+            <h2>Vérification des Données d'Analyse</h2>
+            <button class="test-button" onclick="testAnalysisData()">Tester les Données</button>
+            <button class="test-button" onclick="testFrenchVersion()">Test Version Française</button>
+            <button class="test-button" onclick="testEnglishVersion()">Test Version Anglaise</button>
+            <div id="test-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Simulation de Rendu</h2>
+            <button class="test-button" onclick="simulateRender()">Simuler le Rendu</button>
+            <div id="render-results"></div>
+        </div>
+    </div>
+
+    <!-- Charger les composants nécessaires -->
+    <script src="src/components/analysis-content.js"></script>
+    
+    <script>
+        function showResult(message, type = 'success') {
+            const container = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = message;
+            container.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+            document.getElementById('render-results').innerHTML = '';
+        }
+
+        function testAnalysisData() {
+            clearResults();
+            
+            try {
+                const analysisContent = new AnalysisContent();
+                
+                // Test version française
+                const frData = analysisContent.data.fr;
+                const whatsappFr = frData.solutions.find(s => s.id === 'whatsapp-bot');
+                const textbeeFr = frData.solutions.find(s => s.id === 'textbee-sms');
+                
+                if (whatsappFr) {
+                    showResult(`✅ WhatsApp Bot trouvé en français: ${whatsappFr.name}`, 'success');
+                    showResult(`📊 Score WhatsApp Bot FR: ${whatsappFr.total}/${whatsappFr.maxTotal} points`, 'success');
+                    showResult(`🏆 WhatsApp Bot gagnant FR: ${whatsappFr.winner ? 'OUI' : 'NON'}`, whatsappFr.winner ? 'success' : 'error');
+                } else {
+                    showResult('❌ WhatsApp Bot non trouvé en français', 'error');
+                }
+                
+                if (textbeeFr) {
+                    showResult(`✅ TextBee SMS trouvé en français: ${textbeeFr.name}`, 'success');
+                    showResult(`📊 Score TextBee SMS FR: ${textbeeFr.total}/${textbeeFr.maxTotal} points`, 'success');
+                    showResult(`🏆 TextBee SMS gagnant FR: ${textbeeFr.winner ? 'OUI' : 'NON'}`, !textbeeFr.winner ? 'success' : 'warning');
+                } else {
+                    showResult('❌ TextBee SMS non trouvé en français', 'error');
+                }
+                
+                // Test version anglaise
+                const enData = analysisContent.data.en;
+                const whatsappEn = enData.solutions.find(s => s.id === 'whatsapp-bot');
+                const textbeeEn = enData.solutions.find(s => s.id === 'textbee-sms');
+                
+                if (whatsappEn) {
+                    showResult(`✅ WhatsApp Bot trouvé en anglais: ${whatsappEn.name}`, 'success');
+                    showResult(`📊 Score WhatsApp Bot EN: ${whatsappEn.total}/${whatsappEn.maxTotal} points`, 'success');
+                    showResult(`🏆 WhatsApp Bot gagnant EN: ${whatsappEn.winner ? 'YES' : 'NO'}`, whatsappEn.winner ? 'success' : 'error');
+                } else {
+                    showResult('❌ WhatsApp Bot non trouvé en anglais', 'error');
+                }
+                
+                if (textbeeEn) {
+                    showResult(`✅ TextBee SMS trouvé en anglais: ${textbeeEn.name}`, 'success');
+                    showResult(`📊 Score TextBee SMS EN: ${textbeeEn.total}/${textbeeEn.maxTotal} points`, 'success');
+                    showResult(`🏆 TextBee SMS gagnant EN: ${textbeeEn.winner ? 'YES' : 'NO'}`, !textbeeEn.winner ? 'success' : 'warning');
+                } else {
+                    showResult('❌ TextBee SMS non trouvé en anglais', 'error');
+                }
+                
+                // Test recommandation
+                showResult(`🎯 Recommandation FR: ${frData.recommendation.winner}`, frData.recommendation.winner === 'WhatsApp Bot' ? 'success' : 'error');
+                showResult(`🎯 Recommandation EN: ${enData.recommendation.winner}`, enData.recommendation.winner === 'WhatsApp Bot' ? 'success' : 'error');
+                
+            } catch (error) {
+                showResult(`❌ Erreur lors du test: ${error.message}`, 'error');
+            }
+        }
+
+        function testFrenchVersion() {
+            clearResults();
+            
+            try {
+                const analysisContent = new AnalysisContent();
+                const frData = analysisContent.data.fr;
+                
+                showResult(`📋 Titre: ${frData.title}`, 'success');
+                showResult(`📋 Sous-titre: ${frData.subtitle}`, 'success');
+                
+                frData.solutions.forEach(solution => {
+                    const isWinner = solution.winner ? ' 🏆 GAGNANT' : '';
+                    const isRecommended = solution.recommended ? ' ⭐ RECOMMANDÉ' : '';
+                    showResult(`🔍 ${solution.name}: ${solution.total}/30 points${isWinner}${isRecommended}`, 
+                              solution.winner ? 'success' : 'warning');
+                });
+                
+            } catch (error) {
+                showResult(`❌ Erreur test français: ${error.message}`, 'error');
+            }
+        }
+
+        function testEnglishVersion() {
+            clearResults();
+            
+            try {
+                const analysisContent = new AnalysisContent();
+                const enData = analysisContent.data.en;
+                
+                showResult(`📋 Title: ${enData.title}`, 'success');
+                showResult(`📋 Subtitle: ${enData.subtitle}`, 'success');
+                
+                enData.solutions.forEach(solution => {
+                    const isWinner = solution.winner ? ' 🏆 WINNER' : '';
+                    const isRecommended = solution.recommended ? ' ⭐ RECOMMENDED' : '';
+                    showResult(`🔍 ${solution.name}: ${solution.total}/30 points${isWinner}${isRecommended}`, 
+                              solution.winner ? 'success' : 'warning');
+                });
+                
+            } catch (error) {
+                showResult(`❌ Erreur test anglais: ${error.message}`, 'error');
+            }
+        }
+
+        function simulateRender() {
+            const container = document.getElementById('render-results');
+            container.innerHTML = '';
+            
+            try {
+                const analysisContent = new AnalysisContent();
+                
+                // Rendu français
+                const frHtml = analysisContent.render('fr');
+                const frDiv = document.createElement('div');
+                frDiv.innerHTML = '<h3>🇫🇷 Rendu Français:</h3>' + frHtml;
+                container.appendChild(frDiv);
+                
+                // Rendu anglais
+                const enHtml = analysisContent.render('en');
+                const enDiv = document.createElement('div');
+                enDiv.innerHTML = '<h3>🇬🇧 Rendu Anglais:</h3>' + enHtml;
+                container.appendChild(enDiv);
+                
+                showResult('✅ Rendu simulé avec succès - Vérifiez ci-dessous', 'success');
+                
+                // Vérifier les badges gagnants
+                const winnerBadges = container.querySelectorAll('.winner-badge');
+                if (winnerBadges.length >= 2) {
+                    showResult(`✅ ${winnerBadges.length} badges gagnants trouvés`, 'success');
+                } else {
+                    showResult(`⚠️ Seulement ${winnerBadges.length} badge(s) gagnant(s) trouvé(s)`, 'warning');
+                }
+                
+            } catch (error) {
+                showResult(`❌ Erreur simulation: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-test au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                showResult('🚀 Tests prêts - Cliquez sur les boutons pour vérifier que WhatsApp Bot est bien la solution gagnante', 'warning');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

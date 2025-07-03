@@ -53,22 +53,36 @@ class AgribotApp {
     async initializeComponents() {
         // Initialize translations first
         if (typeof initTranslations === 'function') {
-            initTranslations();
+            try {
+                initTranslations();
+            } catch (error) {
+                console.warn('Failed to initialize translations:', error);
+            }
         }
-        
+
         // Wait for other components to be available
         await this.waitForComponents();
-        
-        // Store component references
+
+        // Store component references with fallbacks
         this.components = {
-            navigation: window.navigationManager,
-            contentLoader: window.contentLoader,
+            navigation: window.navigationManager || null,
+            contentLoader: window.contentLoader || null,
             translations: {
-                switch: window.switchLanguage,
-                get: window.getTranslation,
-                current: window.getCurrentLanguage
+                switch: window.switchLanguage || (() => console.warn('switchLanguage not available')),
+                get: window.getTranslation || ((key) => key),
+                current: window.getCurrentLanguage || (() => 'fr')
             }
         };
+
+        // Set up a delayed check for components that might load later
+        setTimeout(() => {
+            if (!this.components.navigation && window.navigationManager) {
+                this.components.navigation = window.navigationManager;
+            }
+            if (!this.components.contentLoader && window.contentLoader) {
+                this.components.contentLoader = window.contentLoader;
+            }
+        }, 1000);
     }
     
     async waitForComponents() {
