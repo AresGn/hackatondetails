@@ -219,6 +219,13 @@ a:hover {
     display: block;
 }
 
+/* Mobile content sections adjustment */
+@media (max-width: 768px) {
+    .content-section {
+        padding-top: 70px; /* Height of mobile header */
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
