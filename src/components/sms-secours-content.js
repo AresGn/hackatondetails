@@ -1,7 +1,9 @@
 // ===== SMS SECOURS CONTENT COMPONENT =====
 
-class SMSSecoursContent {
+class SMSSecoursContent extends BaseComponent {
     constructor() {
+        super();
+        this.containerId = 'sms-secours-content';
         this.data = {
             fr: {
                 title: "SMS Secours - Plan de Fallback",
@@ -184,8 +186,22 @@ class SMSSecoursContent {
         };
     }
 
-    render(language = 'fr') {
-        const data = this.data[language];
+    // Override from BaseComponent
+    onLanguageChanged(language) {
+        this.refreshContent();
+    }
+
+    // Override from BaseComponent
+    refreshContent() {
+        const container = document.getElementById(this.containerId);
+        if (container) {
+            container.innerHTML = this.render();
+        }
+    }
+
+    render(language = null) {
+        const currentLang = language || this.currentLanguage || 'fr';
+        const data = this.data[currentLang];
         
         return `
             <div class="sms-secours-container">
@@ -259,7 +275,5 @@ class SMSSecoursContent {
     }
 }
 
-// Initialize component when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    window.smsSecoursContent = new SMSSecoursContent();
-});
+// Export for use in content loader
+window.SMSSecoursContent = SMSSecoursContent;

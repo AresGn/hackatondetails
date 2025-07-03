@@ -106,12 +106,40 @@ class ContentLoader {
             </div>
         `;
     }
+
+    getErrorContent(message) {
+        const retryText = (typeof getTranslation === 'function') ? getTranslation('retry') : 'Réessayer';
+        return `
+            <div class="error-state">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>${message}</p>
+                <button onclick="location.reload()" class="retry-btn">
+                    ${retryText}
+                </button>
+            </div>
+        `;
+    }
     
     async loadProblemContent() {
         // Use the ProblemContent component if available
         if (window.ProblemContent) {
-            const problemComponent = new window.ProblemContent();
-            return problemComponent.render();
+            try {
+                const problemComponent = new window.ProblemContent();
+
+                // Store component instance for later updates
+                if (!window.componentInstances) {
+                    window.componentInstances = {};
+                }
+                window.componentInstances.problem = problemComponent;
+
+                // Wait for i18n to be ready
+                await problemComponent.waitForI18n();
+
+                return problemComponent.render();
+            } catch (error) {
+                console.error('Error creating ProblemContent:', error);
+                return this.getErrorContent('Erreur lors du chargement du problème');
+            }
         }
 
         // Fallback content if component not loaded
@@ -126,8 +154,23 @@ class ContentLoader {
     async loadAnalysisContent() {
         // Use the AnalysisContent component if available
         if (window.AnalysisContent) {
-            const analysisComponent = new window.AnalysisContent();
-            return analysisComponent.render();
+            try {
+                const analysisComponent = new window.AnalysisContent();
+
+                // Store component instance for later updates
+                if (!window.componentInstances) {
+                    window.componentInstances = {};
+                }
+                window.componentInstances.analysis = analysisComponent;
+
+                // Wait for i18n to be ready
+                await analysisComponent.waitForI18n();
+
+                return analysisComponent.render();
+            } catch (error) {
+                console.error('Error creating AnalysisContent:', error);
+                return this.getErrorContent('Erreur lors du chargement de l\'analyse');
+            }
         }
 
         // Fallback content if component not loaded
@@ -148,11 +191,10 @@ class ContentLoader {
     }
     
     async loadSmsSecoursContent() {
-        const lang = (typeof getCurrentLanguage === 'function') ? getCurrentLanguage() : 'fr';
-
         // Use the SMSSecoursContent component if available
-        if (window.smsSecoursContent) {
-            return window.smsSecoursContent.render(lang);
+        if (window.SMSSecoursContent) {
+            const smsComponent = new window.SMSSecoursContent();
+            return smsComponent.render();
         }
 
         // Fallback content if component not loaded
@@ -201,9 +243,8 @@ class ContentLoader {
     
     initializeInteractiveElements(container) {
         // Initialize any interactive elements in the loaded content
-        const buttons = container.querySelectorAll('button');
         const tabs = container.querySelectorAll('.tab-btn');
-        
+
         // Add event listeners as needed
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {

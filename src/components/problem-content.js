@@ -19,7 +19,22 @@ class ProblemContent extends BaseComponent {
         }
     }
 
+    // Override from BaseComponent - called when initialization is complete
+    onInitialized() {
+        this.refreshContent();
+    }
+
     render() {
+        // Wait for i18n to be ready before rendering
+        if (!this.isInitialized) {
+            return `
+                <div class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Chargement du problème...</p>
+                </div>
+            `;
+        }
+
         return `
             <div class="problem-framework">
                 <div class="framework-header">

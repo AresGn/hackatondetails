@@ -388,3 +388,125 @@
         outline-offset: 2px;
     }
 }
+
+/* ===== IDEAS ANALYSIS RESPONSIVE STYLES ===== */
+@media (max-width: 767px) {
+    .analysis-framework {
+        padding: var(--spacing-lg);
+        gap: var(--spacing-2xl);
+    }
+
+    .analysis-header {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .analysis-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .analysis-subtitle {
+        font-size: var(--font-size-lg);
+    }
+
+    .criteria-legend {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .criterion-label {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
+        text-align: center;
+    }
+
+    .solutions-comparison {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .solution-card {
+        padding: var(--spacing-lg);
+    }
+
+    .solution-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .criterion-score {
+        padding: var(--spacing-md);
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+
+    .criterion-name {
+        font-size: var(--font-size-base);
+    }
+
+    .criterion-value {
+        font-size: var(--font-size-lg);
+    }
+
+    .total-score {
+        padding: var(--spacing-lg);
+    }
+
+    .score-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    .pros-cons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .pros, .cons {
+        padding: var(--spacing-lg);
+    }
+
+    .pros li, .cons li {
+        padding: var(--spacing-sm);
+        padding-left: var(--spacing-xl);
+        font-size: var(--font-size-sm);
+    }
+
+    .solution-scores {
+        padding: var(--spacing-lg);
+        gap: var(--spacing-lg);
+    }
+
+    .score-item {
+        padding: var(--spacing-lg);
+    }
+
+    .score-label {
+        font-size: var(--font-size-lg);
+    }
+
+    .score-bar {
+        height: 40px;
+    }
+
+    .score-bar .score-value {
+        font-size: var(--font-size-xl);
+        padding: var(--spacing-xs) var(--spacing-md);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .analysis-framework {
+        padding: var(--spacing-xl);
+    }
+
+    .solutions-comparison {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .solution-card {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}

@@ -7,7 +7,7 @@
     "nav_solutions": "Solutions",
     "nav_whatsapp": "WhatsApp Bot",
     "nav_sms_secours": "SMS Backup",
-    "nav_ecosystem": "Ecosystem"
+    "nav_ecosystem": "Business Model"
   },
   "hero": {
     "title": "AgriBot Early Warning Solutions",
@@ -39,8 +39,8 @@
     "sms_secours_subtitle": "Automatic backup solution with TextBee",
     "whatsapp_title": "WhatsApp Bot Solution",
     "whatsapp_subtitle": "Rich and interactive messaging",
-    "ecosystem_title": "AgriBot Ecosystem",
-    "ecosystem_subtitle": "Complete business model vision"
+    "ecosystem_title": "AgriBot Business Model",
+    "ecosystem_subtitle": "Economic model and revenue streams"
   },
   "problem": {
     "title": "Problem Definition Framework",

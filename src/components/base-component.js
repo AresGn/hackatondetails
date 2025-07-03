@@ -13,6 +13,8 @@ class BaseComponent {
         this.waitForI18n().then(() => {
             this.isInitialized = true;
             this.currentLanguage = window.i18n ? window.i18n.getCurrentLanguage() : 'fr';
+            // Trigger a refresh once initialized
+            this.onInitialized();
         });
     }
 
@@ -41,6 +43,12 @@ class BaseComponent {
 
     // Override this method in child classes
     onLanguageChanged(language) {
+        // Default implementation - refresh content
+        this.refreshContent();
+    }
+
+    // Called when component is fully initialized
+    onInitialized() {
         // Default implementation - refresh content
         this.refreshContent();
     }

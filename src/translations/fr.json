@@ -7,11 +7,11 @@
     "nav_solutions": "Solutions",
     "nav_whatsapp": "WhatsApp Bot",
     "nav_sms_secours": "SMS Secours",
-    "nav_ecosystem": "Écosystème"
+    "nav_ecosystem": "Business Model"
   },
   "hero": {
     "title": "Solutions AgriBot pour l'Alerte Précoce",
-    "subtitle": "Hackathon OpenEPI 2025 - Protéger les cultures avec l'intelligence artificielle"
+    "subtitle": "Hackathon OpenEPI 2025 - Protéger les cultures en utilisant les données ouvertes sur https://developer.openepi.io/data-catalog"
   },
   "stats": {
     "farmers": "Agriculteurs ciblés",
@@ -39,8 +39,8 @@
     "sms_secours_subtitle": "Solution de secours automatique avec TextBee",
     "whatsapp_title": "Solution WhatsApp Bot",
     "whatsapp_subtitle": "Messagerie riche et interactive",
-    "ecosystem_title": "Écosystème AgriBot",
-    "ecosystem_subtitle": "Vision complète du business model"
+    "ecosystem_title": "Business Model AgriBot",
+    "ecosystem_subtitle": "Modèle économique et sources de revenus"
   },
   "problem": {
     "title": "Cadre de Définition du Problème",

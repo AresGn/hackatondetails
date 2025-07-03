@@ -19,7 +19,22 @@ class AnalysisContent extends BaseComponent {
         }
     }
 
+    // Override from BaseComponent - called when initialization is complete
+    onInitialized() {
+        this.refreshContent();
+    }
+
     render() {
+        // Wait for i18n to be ready before rendering
+        if (!this.isInitialized) {
+            return `
+                <div class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Chargement de l'analyse...</p>
+                </div>
+            `;
+        }
+
         return `
             <div class="analysis-framework">
                 <div class="analysis-header">
@@ -143,20 +158,13 @@ class AnalysisContent extends BaseComponent {
                                 <div class="pros">
                                     <h4>${this.t('analysis.labels.pros')}</h4>
                                     <ul>
-                                        <li>Plateforme familière pour 85% des agriculteurs</li>
-                                        <li>Messagerie riche (texte, audio, images, vidéos)</li>
-                                        <li>Interface conversationnelle intuitive</li>
-                                        <li>Fonctionne sur téléphones basiques</li>
-                                        <li>Pas d'installation d'app requise</li>
-                                        <li>Support multilingue natif</li>
+                                        ${this.t('analysis.solutions.whatsapp_bot.pros').map(pro => `<li>${pro}</li>`).join('')}
                                     </ul>
                                 </div>
                                 <div class="cons">
                                     <h4>${this.t('analysis.labels.cons')}</h4>
                                     <ul>
-                                        <li>Dépendant de la disponibilité de WhatsApp</li>
-                                        <li>Limitations de l'API WhatsApp Business</li>
-                                        <li>Coûts par message pour volumes élevés</li>
+                                        ${this.t('analysis.solutions.whatsapp_bot.cons').map(con => `<li>${con}</li>`).join('')}
                                     </ul>
                                 </div>
                             </div>
@@ -205,21 +213,13 @@ class AnalysisContent extends BaseComponent {
                                 <div class="pros">
                                     <h4>${this.t('analysis.labels.pros')}</h4>
                                     <ul>
-                                        <li>Compatibilité universelle (100% des téléphones)</li>
-                                        <li>Fonctionne sans internet</li>
-                                        <li>Très faible coût</li>
-                                        <li>Temps de réponse rapide</li>
-                                        <li>Support multilingue</li>
-                                        <li>Fiable et robuste</li>
+                                        ${this.t('analysis.solutions.sms_system.pros').map(pro => `<li>${pro}</li>`).join('')}
                                     </ul>
                                 </div>
                                 <div class="cons">
                                     <h4>${this.t('analysis.labels.cons')}</h4>
                                     <ul>
-                                        <li>Interface limitée (texte seulement)</li>
-                                        <li>Pas de médias riches</li>
-                                        <li>Expérience utilisateur basique</li>
-                                        <li>Difficile de créer des interactions complexes</li>
+                                        ${this.t('analysis.solutions.sms_system.cons').map(con => `<li>${con}</li>`).join('')}
                                     </ul>
                                 </div>
                             </div>
@@ -234,3 +234,6 @@ class AnalysisContent extends BaseComponent {
         `;
     }
 }
+
+// Export for use in content loader
+window.AnalysisContent = AnalysisContent;
